@@ -15,5 +15,6 @@ public class ItemScriptableObject : ScriptableObject
     public float ItemWeight;
     public ItemRarity Rarity;
     public float Quantity;
+    public float Weight;
 }
     
