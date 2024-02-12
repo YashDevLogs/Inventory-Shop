@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ItemDisplay : MonoBehaviour
+public class ItemDescriptionDisplay : MonoBehaviour
 {
     public ItemScriptableObject item;
 
@@ -18,9 +18,9 @@ public class ItemDisplay : MonoBehaviour
     public Text weight;
     void Start()
     {
-        nameText.text = item.name;
+        nameText.text = item.Name;
         icon.sprite = item.Icon;
-        buyPrice.text = item.BuyingPrice.ToString( buyPrice.text);
+        buyPrice.text = item.BuyingPrice.ToString(buyPrice.text);
         sellPrice.text = item.SellingPrice.ToString( sellPrice.text);
         quantity.text = item.Quantity.ToString(quantity.text);
         weight.text = item.Weight.ToString(weight.text );

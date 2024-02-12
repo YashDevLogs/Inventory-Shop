@@ -12,7 +12,6 @@ public class ItemScriptableObject : ScriptableObject
     public string ItemDescription;
     public float BuyingPrice;
     public float SellingPrice;
-    public float ItemWeight;
     public ItemRarity Rarity;
     public float Quantity;
     public float Weight;
