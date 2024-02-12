@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225f3165ec869e24cad1a5d7384eea96, type: 3}
-  m_Name: Armor
+  m_Name: ArmorShoes
   m_EditorClassIdentifier: 
-  ItemType: 1
-  Name: Armor
-  Icon: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
+  ItemType: 0
+  Name: Armor Shoes
+  Icon: {fileID: 21300000, guid: 12bba31e10a26b645908ca35cce3ac2a, type: 3}
   ItemDescription: Reduces 10% damage from mele attack
-  BuyingPrice: 100
-  SellingPrice: 20
-  ItemWeight: 10
-  Rarity: 1
-  Quantity: 1
-  Weight: 50
+  BuyingPrice: 25
+  SellingPrice: 10
+  Rarity: 2
+  Quantity: 2
+  Weight: 5
