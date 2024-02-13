@@ -21,6 +21,7 @@ public class ShopManager : MonoBehaviour
         WeaponButton.onClick.AddListener(() => ShowPanel(WeaponPanel));
         ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
         TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
+
     }
 
     private void ShowPanel(GameObject panelToShow)

@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class ItemIconDisplay : MonoBehaviour
 {
     public ItemScriptableObject item;
+    public GameObject descriptionPanel;
+    public GameObject InventoryPanel;
 
     public Image icon;
     public Text nameText;
@@ -19,6 +21,8 @@ public class ItemIconDisplay : MonoBehaviour
     public Sprite rareSprite;
     public Sprite epicSprite;
     public Sprite legendarySprite;
+
+
 
 
     void Start()
@@ -49,7 +53,23 @@ public class ItemIconDisplay : MonoBehaviour
             default:
                 Debug.LogWarning("Invalid rarity type");
                 break;
+
+                
         }
+        GetComponent<Button>().onClick.AddListener(ShowDescription);
+    }
+
+    void ShowDescription()
+    {
+        // Disable inventory panel
+       InventoryPanel.SetActive(false);
+
+        // Enable description panel
+        descriptionPanel.SetActive(true);
+
+        // Pass item information to the description panel
+        ItemDescriptionDisplay descriptionDisplay = descriptionPanel.GetComponent<ItemDescriptionDisplay>();
+        descriptionDisplay.DisplayItemDescription(item);
     }
 
 }
