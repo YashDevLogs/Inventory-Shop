@@ -18,6 +18,8 @@ public class ItemDescriptionDisplay : MonoBehaviour
     public Text quantity;
     public Text weight;
     public Text RarityType;
+    public Text BuyPanelName;
+    public Text BuyPanelPrice;
 
     public Image rarityButtonImage;
     public Sprite veryCommonSprite;
@@ -26,17 +28,7 @@ public class ItemDescriptionDisplay : MonoBehaviour
     public Sprite epicSprite;
     public Sprite legendarySprite;
     void Start()
-    {
-/*        nameText.text = item.Name;
-        icon.sprite = item.Icon;
-        descriptionText.text = item.ItemDescription;
-        buyPrice.text = "Buy Price: $" + item.BuyingPrice.ToString();
-        sellPrice.text = "Sell Price: $" + item.SellingPrice.ToString();
-        quantity.text = "Quantity: x" + item.Quantity.ToString();
-        weight.text = "Weight: " + item.Weight.ToString() + "kg";
-        RarityType.text = "Rarity Type : " + item.Rarity;*/
-
-       
+    { 
 
     }
 
@@ -50,6 +42,10 @@ public class ItemDescriptionDisplay : MonoBehaviour
         quantity.text = "Quantity: x" + item.Quantity.ToString();
         weight.text = "Weight: " + item.Weight.ToString() + "kg";
         RarityType.text = "Rarity Type : " + item.Rarity;
+
+        BuyPanelName.text = item.Name;
+        BuyPanelPrice.text = item.BuyingPrice.ToString(); 
+
 
         switch (item.Rarity)
         {

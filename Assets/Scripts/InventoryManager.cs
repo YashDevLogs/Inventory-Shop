@@ -1,35 +1,66 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public List<ItemScriptableObject> items = new List<ItemScriptableObject>();
-
     [SerializeField] private GameObject SlotHolder;
 
-    public ItemScriptableObject ItemsToAdd;
-    public ItemScriptableObject ItemsToRemove;
+    public List<ItemScriptableObject> items = new List<ItemScriptableObject>();
 
-    public GameObject InventoryPanel;
-    public GameObject DescriptionPanel;
-    public Button InventoryButton;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject descriptionPanel;
 
-    private GameObject[] Slots;
+
+    [SerializeField] private Button InventoryButton;
+
+    private GameObject[] slots;  
+
     private void Start()
     {
-        InventoryButton.onClick.AddListener(() => ShowPanel(InventoryPanel));
+        slots = new GameObject[SlotHolder.transform.childCount];
+        for (int i = 0; i < SlotHolder.transform.childCount; i++)
+            slots[i] = SlotHolder.transform.GetChild(i).gameObject;
+
+         InventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
+
+        RefreshUI();
+
+
     }
 
-    public void Add(ItemScriptableObject item) => items.Add(item);
-    public void Remove(ItemScriptableObject item) => items.Remove(item);
-
-
-    private void ShowPanel(GameObject panelToShow)
+    private void RefreshUI()
     {
-        InventoryPanel.SetActive(false);
-        DescriptionPanel.SetActive(false);
+        for (int i = 0; i < slots.Length; i++)
+            try
+            {
+                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = items[i].Icon;
+            }
+            catch
+            {
+                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            }
+    }
+
+    public void AddItem(ItemScriptableObject item)
+    {
+            items.Add(item);
+            RefreshUI();
+    }
+
+    public void RemoveItem(ItemScriptableObject item)
+    {
+        items.Remove(item);
+    }
+
+    public void ShowPanel(GameObject panelToShow)
+    {
+        inventoryPanel.SetActive(false);
+        descriptionPanel.SetActive(false);
 
         panelToShow.SetActive(true);
     }
