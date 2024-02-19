@@ -25,7 +25,6 @@ public class CoinManager : MonoBehaviour
 
     private void Start()
     {
-        
         UpdateCoinText();
     }
 

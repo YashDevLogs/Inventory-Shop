@@ -52,16 +52,16 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemScriptableObject item)
     {
-        if(CurrentWeight <= MaxWeight) 
-        { 
+/*        if (CurrentWeight <= MaxWeight)
+        {*/
             items.Add(item);
-            CurrentWeight += item.Weight;
+/*            CurrentWeight += item.Weight;*/
             RefreshUI();
-        }
+/*        }
         else
         {
             Debug.Log("maximum weight occupied");
-        }
+        }*/
     }
 
     public void RemoveItem(ItemScriptableObject item)

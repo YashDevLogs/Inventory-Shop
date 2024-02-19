@@ -53,7 +53,6 @@ public class ShopManager : MonoBehaviour
         WeaponPanel.SetActive(false);
         ConsumablesPanel.SetActive(false);
         TreasurePanel.SetActive(false);
-       /* BuyConfirmationPanel.SetActive(false);*/
 
         panelToShow.SetActive(true);
     }
@@ -68,19 +67,19 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem()
     {
-        if (canBuyItem == true)
+/*        if (canBuyItem == true)
         {
-        CoinManager.Instance.DeductCoins(item.BuyingPrice);
+        CoinManager.Instance.DeductCoins(item.BuyingPrice);*/
         inventoryManager.AddItem(item);
         Debug.Log("Item Bought");
         BuyConfirmationPanel.SetActive(false);
         ItemBoughtPanel.SetActive(true);
-
+/*
         }
         else if (canBuyItem == false)
         {
             CoinManager.Instance.ShowNotEnoughCoinPanel();
-        }
+        }*/
     }
 
     public void CanBuyItem()
