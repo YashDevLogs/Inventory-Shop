@@ -1,4 +1,13 @@
 Inventory System with Unity
+![Screenshot 2024-02-19 165147](https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/289da35f-ec52-4971-9712-a2884fc2fa41)
+![Screenshot 2024-02-19 165107](https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/f190a658-81a8-4499-b2a2-dcd04e8a0230)
+![Screenshot 2024-02-19 165042](https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/4e6af53a-1eb1-4110-9a17-8e63b6717c67)
+![Screenshot 2024-02-19 165009](https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/9b6cdead-e00f-4962-902f-152fa7eba373)
+![Screenshot 2024-02-19 164942](https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/ea1a37ea-b7c9-442f-88cd-8f248509679b)
+![Screenshot 2024-02-19 164850](https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/96643d96-096b-485a-a881-d2f72308ede3)
+
+
+https://github.com/YashDevLogs/Inventory-Shop/assets/91522919/6932b133-a25e-4f61-b54d-b95572e1b2c4
 
 
 Overview
