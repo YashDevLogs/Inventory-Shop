@@ -15,7 +15,9 @@ MonoBehaviour:
   ItemType: 1
   Name: Katana
   Icon: {fileID: 21300000, guid: f2a6caf7b6afd7b4095cfac985b5869c, type: 3}
-  ItemDescription: Japanese sword
+  ItemDescription: The Shadowblade Katana, forged by master swordsmiths in the heart
+    of ancient Japan, its sleek and deadly design embodies the essence of stealth
+    and precision, striking with the swiftness of a shadow.
   BuyingPrice: 500
   SellingPrice: 400
   Rarity: 4

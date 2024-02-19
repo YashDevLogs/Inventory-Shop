@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Hawk Helmet
   Icon: {fileID: 21300000, guid: f7a8708dc5bcaf14ebd3978a42a6ea65, type: 3}
-  ItemDescription: 
+  ItemDescription: A fearsome helm fashioned from the skull of a mighty beast, instilling
+    fear in enemies and offering formidable defense.
   BuyingPrice: 100
   SellingPrice: 75
   Rarity: 4

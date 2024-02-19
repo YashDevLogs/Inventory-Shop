@@ -16,6 +16,10 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private Button InventoryButton;
 
+    private float MaxWeight = 50 ;
+    private float CurrentWeight;
+
+
     private GameObject[] slots;  
 
     private void Start()
@@ -24,7 +28,7 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < SlotHolder.transform.childCount; i++)
             slots[i] = SlotHolder.transform.GetChild(i).gameObject;
 
-         InventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
+        InventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
 
         RefreshUI();
 
@@ -48,13 +52,22 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemScriptableObject item)
     {
+        if(CurrentWeight <= MaxWeight) 
+        { 
             items.Add(item);
+            CurrentWeight += item.Weight;
             RefreshUI();
+        }
+        else
+        {
+            Debug.Log("maximum weight occupied");
+        }
     }
 
     public void RemoveItem(ItemScriptableObject item)
     {
         items.Remove(item);
+        CurrentWeight -= item.Weight;
     }
 
     public void ShowPanel(GameObject panelToShow)

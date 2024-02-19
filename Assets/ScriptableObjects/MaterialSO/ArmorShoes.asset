@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Armor Shoes
   Icon: {fileID: 21300000, guid: 12bba31e10a26b645908ca35cce3ac2a, type: 3}
-  ItemDescription: Reduces 10% damage from mele attack
+  ItemDescription: Durable climbing boots equipped with steel spikes, enabling adventurers
+    to scale treacherous cliffs and icy mountains with ease.
   BuyingPrice: 25
   SellingPrice: 10
   Rarity: 2

@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Armour Helmet
   Icon: {fileID: 21300000, guid: b53db54545fcd5747b7ba5e450c07baf, type: 3}
-  ItemDescription: 
+  ItemDescription: A lightweight helmet made from rare materials, designed for swift
+    and stealthy adventurers
   BuyingPrice: 40
   SellingPrice: 30
   Rarity: 2

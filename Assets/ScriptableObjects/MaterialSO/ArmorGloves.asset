@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Armor Gloves
   Icon: {fileID: 21300000, guid: a889cb8ba677b3e418c33307c1336099, type: 3}
-  ItemDescription: Reduces 10% damage from mele attack
+  ItemDescription: Gloves of fire resistance, crafted from dragon scales and imbued
+    with flame-retardant magic, offering protection against fiery attacks.
   BuyingPrice: 15
   SellingPrice: 3
   Rarity: 2

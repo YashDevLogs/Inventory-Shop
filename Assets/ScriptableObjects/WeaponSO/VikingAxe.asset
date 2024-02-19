@@ -15,7 +15,9 @@ MonoBehaviour:
   ItemType: 1
   Name: Viking Axe
   Icon: {fileID: 21300000, guid: eab93444844589c40a72574411dd0120, type: 3}
-  ItemDescription: made by greatest warriors in the past
+  ItemDescription: '"Odin''s Wrath: Forged in the heart of roaring flames, this Viking
+    axe is said to have been blessed by the Allfather himself, its wielder granted
+    the strength of thunder and the speed of lightning in combat.'
   BuyingPrice: 300
   SellingPrice: 150
   Rarity: 3

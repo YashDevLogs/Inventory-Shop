@@ -15,7 +15,9 @@ MonoBehaviour:
   ItemType: 3
   Name: Magic Bronze Ring
   Icon: {fileID: 21300000, guid: 0f1303cfff6593747a97f9c964728649, type: 3}
-  ItemDescription: 
+  ItemDescription: The Bronze Guardian Ring, engraved with ancient runes, summons
+    a spectral guardian to protect the wearer from harm, absorbing damage and deflecting
+    attacks.
   BuyingPrice: 20
   SellingPrice: 10
   Rarity: 2

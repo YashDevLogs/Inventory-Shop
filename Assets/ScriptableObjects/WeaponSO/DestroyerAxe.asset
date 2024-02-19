@@ -15,7 +15,9 @@ MonoBehaviour:
   ItemType: 1
   Name: Destroyer Axe
   Icon: {fileID: 21300000, guid: 68377f5ef74af2a448279951a5a833b9, type: 3}
-  ItemDescription: 
+  ItemDescription: '"The Destroyer Axe, forged in the heart of raging infernos and
+    tempered in the blood of berserkers, pulses with untamed energy, its jagged edge
+    hungry for battle.'
   BuyingPrice: 200
   SellingPrice: 100
   Rarity: 2

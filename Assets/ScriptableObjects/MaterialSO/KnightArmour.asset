@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Knight Armour
   Icon: {fileID: 21300000, guid: 131ae7d5c3bf62f4ca9d47f57e1ef952, type: 3}
-  ItemDescription: 
+  ItemDescription: Protective armor crafted from sturdy materials to shield the wearer
+    from physical attacks. Reduces 20% damage from mele attack
   BuyingPrice: 150
   SellingPrice: 75
   Rarity: 4

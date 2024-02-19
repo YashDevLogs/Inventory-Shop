@@ -15,7 +15,9 @@ MonoBehaviour:
   ItemType: 3
   Name: Bronze Ring
   Icon: {fileID: 21300000, guid: e76b30749d6bac4489c3ccf1ccb2c8fc, type: 3}
-  ItemDescription: 
+  ItemDescription: The Bronze Oakheart Ring, fashioned from enchanted wood, grants
+    the wearer the resilience of ancient trees, providing enhanced endurance and
+    vitality.
   BuyingPrice: 10
   SellingPrice: 4
   Rarity: 1

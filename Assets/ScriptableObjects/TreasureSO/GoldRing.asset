@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 3
   Name: Gold Ring
   Icon: {fileID: 21300000, guid: 8661c2c7e325a33438f06b02458fd199, type: 3}
-  ItemDescription: 
+  ItemDescription: '"The Golden Aura Ring, pulsating with divine energy, envelops
+    the wearer in a protective aura, deflecting incoming attacks and spells.'
   BuyingPrice: 30
   SellingPrice: 20
   Rarity: 3

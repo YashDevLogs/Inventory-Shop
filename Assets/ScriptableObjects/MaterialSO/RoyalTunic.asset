@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Royal Tunic
   Icon: {fileID: 21300000, guid: e29f293938fc0494d87d11a7532e32ea, type: 3}
-  ItemDescription: 
+  ItemDescription: Legendary armor worn by heroes of old, said to repel even the
+    deadliest of foes with its impenetrable defense.
   BuyingPrice: 200
   SellingPrice: 100
   Rarity: 3

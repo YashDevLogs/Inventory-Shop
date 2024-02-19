@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Mountain Shoes
   Icon: {fileID: 21300000, guid: 84d6a36e47e8f9042a960a8b033203a1, type: 3}
-  ItemDescription: 
+  ItemDescription: Sturdy leather boots, reinforced with steel plates, offering excellent
+    protection and stability on any terrain
   BuyingPrice: 15
   SellingPrice: 7
   Rarity: 4

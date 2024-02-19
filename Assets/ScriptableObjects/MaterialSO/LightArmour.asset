@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 0
   Name: Light Armour
   Icon: {fileID: 21300000, guid: 5105fe1d825990746b9a92407ea447ca, type: 3}
-  ItemDescription: 
+  ItemDescription: Reduces 10% damage from mele attack
   BuyingPrice: 50
   SellingPrice: 10
   Rarity: 0

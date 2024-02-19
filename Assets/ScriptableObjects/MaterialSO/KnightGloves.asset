@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: KnightGloves
   Icon: {fileID: 21300000, guid: 9309c4b66286c02498fce9e465b4916b, type: 3}
-  ItemDescription: 
+  ItemDescription: Gloves of the shadow thief, woven from shadow essence, granting
+    the wearer the ability to blend into darkness and move unseen.
   BuyingPrice: 20
   SellingPrice: 12
   Rarity: 4

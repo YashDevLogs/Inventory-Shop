@@ -15,7 +15,9 @@ MonoBehaviour:
   ItemType: 1
   Name: Legendary Sword
   Icon: {fileID: 21300000, guid: c0ea4b6e528e7fe4aa6cdc94d38691a1, type: 3}
-  ItemDescription: sword of a great medival king
+  ItemDescription: Excalibur, the legendary blade of King Arthur, said to have been
+    forged by the Lady of the Lake herself, its gleaming steel and golden hilt symbolize
+    the sovereignty of Camelot and the honor of its wielder.
   BuyingPrice: 500
   SellingPrice: 350
   Rarity: 4

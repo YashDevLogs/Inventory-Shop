@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Manticore Helmet
   Icon: {fileID: 21300000, guid: 9d4ad9585d881b9469236aa4e598a8b1, type: 3}
-  ItemDescription: 
+  ItemDescription: A mystical helmet crafted from enchanted crystals, said to enhance
+    the wearer's mental acuity and magical prowess.
   BuyingPrice: 35
   SellingPrice: 20
   Rarity: 1

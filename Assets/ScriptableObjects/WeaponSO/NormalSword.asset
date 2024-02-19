@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 1
   Name: Normal Sword
   Icon: {fileID: 21300000, guid: c278ec36abbc540489a08ba8765cd092, type: 3}
-  ItemDescription: 
+  ItemDescription: 'Steel Blade: A standard sword crafted from fine steel, balanced
+    for both thrusting and slashing. It is a reliable weapon for any warrior.'
   BuyingPrice: 200
   SellingPrice: 50
   Rarity: 1

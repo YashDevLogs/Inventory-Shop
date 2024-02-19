@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 0
   Name: Mountain Armour
   Icon: {fileID: 21300000, guid: 62b4a2f3dff4a9a4ba03a764d5fdd006, type: 3}
-  ItemDescription: 
+  ItemDescription: Magically reinforced armor forged by skilled artisans, offering
+    resistance against elemental attacks."
   BuyingPrice: 80
   SellingPrice: 25
   Rarity: 4

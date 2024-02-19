@@ -14,6 +14,7 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private Button BuyConfCancleButton;
     [SerializeField] private Button DescriptionCancleButton;
     [SerializeField] private Button boughtCancleButton;
+    [SerializeField] private Button NotEnoghMoneyCancleButton;
 
 
     [SerializeField] private GameObject InventoryPanel;
@@ -21,6 +22,7 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private GameObject DescriptionPanel;
     [SerializeField] private GameObject MenuButtonsPanel;
     [SerializeField] private GameObject boughtPanel;
+    [SerializeField] private GameObject NotEnoghMoneypanel;
  
 
 
@@ -32,6 +34,7 @@ public class MenuButtons : MonoBehaviour
         BuyConfCancleButton.onClick.AddListener(() => PanelToClose(BuyConformationPanel));
         DescriptionCancleButton.onClick.AddListener(() => PanelToClose(DescriptionPanel));
         boughtCancleButton.onClick.AddListener(() => PanelToClose(boughtPanel));
+        NotEnoghMoneyCancleButton.onClick.AddListener(() => PanelToClose(NotEnoghMoneypanel));
 
     }
 

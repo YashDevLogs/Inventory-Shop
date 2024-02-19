@@ -25,7 +25,7 @@ public class CoinManager : MonoBehaviour
 
     private void Start()
     {
-        Coins = 100;
+        
         UpdateCoinText();
     }
 
@@ -40,15 +40,18 @@ public class CoinManager : MonoBehaviour
         UpdateCoinText();
     }
 
-    public void DeductCoins(float amount)
+    public bool DeductCoins(float amount)
     {
-        Coins -= amount;
-        UpdateCoinText();
-    }
-
-    public bool CanBuyItem(float itemPrice)
-    {
-        return Coins >= itemPrice;
+        if (Coins >= amount)
+        {
+            Coins -= amount;
+            UpdateCoinText();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void ShowNotEnoughCoinPanel()
