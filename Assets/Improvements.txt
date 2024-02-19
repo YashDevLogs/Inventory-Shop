@@ -1,0 +1,4 @@
+1. Adding buy sell system which deducts coins while buying and vice versa.
+2. adding weight to inventory while adding an item to inventory.
+3. Need to add sound while buying items.
+4. issue - even if the logic is sorted The bought item is not getting info from "CoinManager" about coins and item info from scriptable objects. as the items (scripted items) are getting selected dynamically, hence the refrerence to the scriptable object at the time of buying is not getting refrerenced.
