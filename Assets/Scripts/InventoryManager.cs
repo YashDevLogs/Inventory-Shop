@@ -16,6 +16,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private Button InventoryButton;
 
+    private ItemScriptableObject ItemData;
+
     private float MaxWeight = 50 ;
     private float CurrentWeight;
 
@@ -52,16 +54,11 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemScriptableObject item)
     {
-/*        if (CurrentWeight <= MaxWeight)
-        {*/
+
             items.Add(item);
-/*            CurrentWeight += item.Weight;*/
+          
             RefreshUI();
-/*        }
-        else
-        {
-            Debug.Log("maximum weight occupied");
-        }*/
+        
     }
 
     public void RemoveItem(ItemScriptableObject item)

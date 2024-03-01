@@ -5129,6 +5129,10 @@ PrefabInstance:
       value: ShopItemButton (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2453861621363259158, guid: 39776fc9e482f6045aaf034fea994c01, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 56b969b9d38fb424ba809d85ac9c8754, type: 2}
+    - target: {fileID: 2453861621363259158, guid: 39776fc9e482f6045aaf034fea994c01, type: 3}
       propertyPath: InventoryPanel
       value: 
       objectReference: {fileID: 943897740}
@@ -6441,7 +6445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39780577645b5c64790c5db2a38eb361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinText: {fileID: 959804833}
+  coinsUI: {fileID: 0}
+  Coins: 0
   NotEnoughCoinPanel: {fileID: 1515076601}
 --- !u!1 &974026960
 GameObject:
@@ -8816,6 +8821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   inventoryManager: {fileID: 1964691078}
+  coinManager: {fileID: 959804835}
   MaterialPanel: {fileID: 478893752}
   WeaponPanel: {fileID: 1355013692}
   ConsumablesPanel: {fileID: 230689100}

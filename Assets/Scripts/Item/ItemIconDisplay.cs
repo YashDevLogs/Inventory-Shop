@@ -29,7 +29,7 @@ public class ItemIconDisplay : MonoBehaviour
     {
         nameText.text = item.Name;
         icon.sprite = item.Icon;
-        buyPrice.text = "$" + item.BuyingPrice.ToString(); 
+        buyPrice.text = "$" + item.BuyingPrice.ToString();
         quantity.text = "x" + item.Quantity.ToString();
 
 

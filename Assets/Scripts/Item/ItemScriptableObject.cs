@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 
@@ -14,5 +15,7 @@ public class ItemScriptableObject : ScriptableObject
     public ItemRarity Rarity;
     public float Quantity;
     public float Weight;
+
+
 }
     

@@ -1,14 +1,19 @@
 
+using Assets.Scripts.Item;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class ShopManager : MonoBehaviour
 {
+ 
 
     public ItemScriptableObject item;
-    [SerializeField] private InventoryManager inventoryManager;   
-    
+    [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private CoinManager coinManager;
+
+    private bool canBuyItem;
 
 
     [SerializeField] private GameObject MaterialPanel;
@@ -27,23 +32,15 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button buyConfirmationButton;
 
 
-    private bool canBuyItem;
-
-
-
-
-
     private void Start()
     {
-
         MaterialButton.onClick.AddListener(() => ShowPanel(MaterialPanel));
         WeaponButton.onClick.AddListener(() => ShowPanel(WeaponPanel));
         ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
         TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
         buyConfirmationButton.onClick.AddListener(BuyItem);
-
-    
+       /* EventService.Instance.OnItemBuy.AddListener(BuyItem);*/
 
     }
 
@@ -67,33 +64,21 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem()
     {
-/*        if (canBuyItem == true)
-        {
-        CoinManager.Instance.DeductCoins(item.BuyingPrice);*/
+        ItemConfig.Instantiate(this);
+        Debug.Log("Item configured");
         inventoryManager.AddItem(item);
-        Debug.Log("Item Bought");
-        BuyConfirmationPanel.SetActive(false);
-        ItemBoughtPanel.SetActive(true);
-/*
-        }
-        else if (canBuyItem == false)
-        {
-            CoinManager.Instance.ShowNotEnoughCoinPanel();
-        }*/
+
+        
     }
 
-    public void CanBuyItem()
-    {
-        if(CoinManager.Instance.Coins >= item.BuyingPrice)
-        {
-            canBuyItem = true;
-        }
-        else
-        {
-            canBuyItem = false;
-        }
+   
+    public bool CanBuyItem() 
+    { 
+        
+        if(item.BuyingPrice < coinManager.Coins) {  canBuyItem = true;}
+        else if(item.BuyingPrice > coinManager.Coins) { canBuyItem = false; }
 
+        return canBuyItem;
     }
-
 }
 
