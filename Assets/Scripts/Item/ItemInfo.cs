@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ItemDescriptionDisplay : MonoBehaviour
+public class ItemInfo : MonoBehaviour
 {
     public ItemScriptableObject item;
 

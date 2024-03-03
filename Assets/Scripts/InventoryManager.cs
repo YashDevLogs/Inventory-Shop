@@ -8,15 +8,13 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject SlotHolder;
 
-    public List<ItemScriptableObject> items = new List<ItemScriptableObject>();
+    private List<ItemScriptableObject> items = new List<ItemScriptableObject>();
 
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject descriptionPanel;
 
-
     [SerializeField] private Button InventoryButton;
 
-    private ItemScriptableObject ItemData;
 
     private float MaxWeight = 50 ;
     private float CurrentWeight;

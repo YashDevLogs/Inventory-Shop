@@ -68,7 +68,7 @@ public class ItemIconDisplay : MonoBehaviour
         descriptionPanel.SetActive(true);
 
         // Pass item information to the description panel
-        ItemDescriptionDisplay descriptionDisplay = descriptionPanel.GetComponent<ItemDescriptionDisplay>();
+        ItemInfo descriptionDisplay = descriptionPanel.GetComponent<ItemInfo>();
         descriptionDisplay.DisplayItemDescription(item);
     }
 

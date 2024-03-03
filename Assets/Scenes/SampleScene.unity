@@ -6381,15 +6381,15 @@ RectTransform:
   m_GameObject: {fileID: 959804831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6805, y: 1.6805, z: 1.6805}
+  m_LocalScale: {x: 2.957512, y: 2.957512, z: 2.957512}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 798537391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 867, y: 508}
-  m_SizeDelta: {x: 160, y: 58.724}
+  m_AnchoredPosition: {x: 777.69946, y: 464.58}
+  m_SizeDelta: {x: 123.28, y: 51.002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959804833
 MonoBehaviour:
@@ -6445,9 +6445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39780577645b5c64790c5db2a38eb361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsUI: {fileID: 0}
-  Coins: 0
-  NotEnoughCoinPanel: {fileID: 1515076601}
+  coinsUI: {fileID: 959804833}
+  Coins: 200
 --- !u!1 &974026960
 GameObject:
   m_ObjectHideFlags: 0
@@ -8826,7 +8825,8 @@ MonoBehaviour:
   ConsumablesPanel: {fileID: 230689100}
   TreasurePanel: {fileID: 2056141957}
   BuyConfirmationPanel: {fileID: 1785869582}
-  ItemBoughtPanel: {fileID: 1609706281}
+  itemBoughtPanel: {fileID: 1609706281}
+  notEnoughCoinsPanel: {fileID: 1515076601}
   MaterialButton: {fileID: 1789867408}
   WeaponButton: {fileID: 983564242}
   ConsumablesButton: {fileID: 2012283312}
@@ -14565,11 +14565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotHolder: {fileID: 743534254}
-  items:
-  - {fileID: 11400000, guid: 02249be8372684c4b8ec12a4188661e4, type: 2}
-  - {fileID: 11400000, guid: 98d070fe2ad05fc49bc4ab17e9605e63, type: 2}
-  - {fileID: 11400000, guid: a4548cf5f9d5304458d1eed8e566dc65, type: 2}
-  - {fileID: 11400000, guid: 48039558062e14c498f6ed36d71098d1, type: 2}
   inventoryPanel: {fileID: 943897740}
   descriptionPanel: {fileID: 1517014702}
   InventoryButton: {fileID: 974026961}

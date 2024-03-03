@@ -1,5 +1,4 @@
 
-using Assets.Scripts.Item;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +20,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject ConsumablesPanel;
     [SerializeField] private GameObject TreasurePanel; 
     [SerializeField] private GameObject BuyConfirmationPanel; 
-    [SerializeField] private GameObject ItemBoughtPanel; 
-    
+    [SerializeField] private GameObject itemBoughtPanel;
+    [SerializeField] private GameObject notEnoughCoinsPanel;
+
 
     [SerializeField] private Button MaterialButton;
     [SerializeField] private Button WeaponButton;
@@ -31,8 +31,13 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button buyButton;
     [SerializeField] private Button buyConfirmationButton;
 
-    public ItemDescriptionDisplay itemDescriptionDisplay;
 
+    public ItemInfo itemDescriptionDisplay;
+
+    private void OnEnable()
+    {
+        EventService.Instance.OnItemBuy.InvokeEvent();
+    }
 
     private void Start()
     {
@@ -41,8 +46,8 @@ public class ShopManager : MonoBehaviour
         ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
         TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
-        buyConfirmationButton.onClick.AddListener(BuyItem);
-       /* EventService.Instance.OnItemBuy.AddListener(BuyItem);*/
+        /*buyConfirmationButton.onClick.AddListener(BuyItem);*/
+        EventService.Instance.OnItemBuy.AddListener(BuyItem);
 
     }
 
@@ -61,26 +66,23 @@ public class ShopManager : MonoBehaviour
     public void ShowBuyConfirmationPanel()
     {
         BuyConfirmationPanel.SetActive(true);
-
     }
 
     public void BuyItem( )
     {
-        item = itemDescriptionDisplay.item;
-        Debug.Log("Item configured");
-        inventoryManager.AddItem(item);
+        if(coinManager.Coins > 100)
+        {  
+            item = itemDescriptionDisplay.item;
+            coinManager.DeductCoins(item.BuyingPrice);
+            inventoryManager.AddItem(item);
+            BuyConfirmationPanel.SetActive(false);
+            itemBoughtPanel.SetActive(true);
+        }
+        else
+        {
+            notEnoughCoinsPanel.SetActive(true);
+        }
 
-        
-    }
-
-   
-    public bool CanBuyItem() 
-    { 
-        
-        if(item.BuyingPrice < coinManager.Coins) {  canBuyItem = true;}
-        else if(item.BuyingPrice > coinManager.Coins) { canBuyItem = false; }
-
-        return canBuyItem;
     }
 }
 

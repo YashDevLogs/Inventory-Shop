@@ -6,14 +6,10 @@ public class CoinManager : MonoBehaviour
     [SerializeField] Text coinsUI;
     public float Coins;
 
-    
-
-    private void Start()
+    private void Update()
     {
-     
+        UpdateCoins();
     }
-
-   
 
     public void AddCoins(float amount)
     {
@@ -26,10 +22,14 @@ public class CoinManager : MonoBehaviour
         Coins -= amount;
         return true;
     }
-/*
-    public bool CanBuyItem()
+
+    public void UpdateCoins()
     {
-        if () ;
-    }*/
+        if (coinsUI != null)
+        {
+            coinsUI.text = "$ " + Coins.ToString();
+        }
+    }
+
 
 }
