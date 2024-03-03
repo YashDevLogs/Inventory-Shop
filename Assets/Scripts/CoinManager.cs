@@ -6,11 +6,6 @@ public class CoinManager : MonoBehaviour
     [SerializeField] Text coinsUI;
     public float Coins;
 
-
-
-
-    [SerializeField] private GameObject NotEnoughCoinPanel;
-
     
 
     private void Start()
@@ -31,10 +26,10 @@ public class CoinManager : MonoBehaviour
         Coins -= amount;
         return true;
     }
-
-    public void ShowNotEnoughCoinPanel()
+/*
+    public bool CanBuyItem()
     {
-        NotEnoughCoinPanel.SetActive(true);
-    }
+        if () ;
+    }*/
 
 }

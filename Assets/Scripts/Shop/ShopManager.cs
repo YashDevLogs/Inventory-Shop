@@ -9,7 +9,7 @@ public class ShopManager : MonoBehaviour
 {
  
 
-    public ItemScriptableObject item;
+    public ItemScriptableObject item { get; set; }
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
 
@@ -30,6 +30,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button TreasureButton;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button buyConfirmationButton;
+
+    public ItemDescriptionDisplay itemDescriptionDisplay;
 
 
     private void Start()
@@ -62,9 +64,9 @@ public class ShopManager : MonoBehaviour
 
     }
 
-    public void BuyItem()
+    public void BuyItem( )
     {
-        ItemConfig.Instantiate(this);
+        item = itemDescriptionDisplay.item;
         Debug.Log("Item configured");
         inventoryManager.AddItem(item);
 

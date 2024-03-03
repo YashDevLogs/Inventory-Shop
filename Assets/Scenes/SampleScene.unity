@@ -8819,7 +8819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d31082f8ced974a9f3dc9f437902a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
   inventoryManager: {fileID: 1964691078}
   coinManager: {fileID: 959804835}
   MaterialPanel: {fileID: 478893752}
@@ -8834,6 +8833,7 @@ MonoBehaviour:
   TreasureButton: {fileID: 1004156934}
   buyButton: {fileID: 1525275081}
   buyConfirmationButton: {fileID: 996764170}
+  itemDescriptionDisplay: {fileID: 1517014704}
 --- !u!1 &1264948450
 GameObject:
   m_ObjectHideFlags: 0

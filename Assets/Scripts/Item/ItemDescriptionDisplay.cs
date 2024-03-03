@@ -21,6 +21,7 @@ public class ItemDescriptionDisplay : MonoBehaviour
     public Text BuyPanelName;
     public Text BuyPanelPrice;
 
+
     public Image rarityButtonImage;
     public Sprite veryCommonSprite;
     public Sprite commonSprite;
@@ -34,6 +35,7 @@ public class ItemDescriptionDisplay : MonoBehaviour
 
     public void DisplayItemDescription(ItemScriptableObject item)
     {
+        this.item = item;
         nameText.text = item.Name;
         icon.sprite = item.Icon;
         descriptionText.text = item.ItemDescription;
