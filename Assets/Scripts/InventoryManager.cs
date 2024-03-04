@@ -12,12 +12,17 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private GameObject maxWeightReachedPanel;
+    [SerializeField] private GameObject itemBoughtPanel;
 
-    [SerializeField] private Button InventoryButton;
+    [SerializeField] private Button inventoryButton;
+    [SerializeField] private ItemInfo itemInfo;
+
+    [SerializeField] private Text currentWeightText;
 
 
-    private float MaxWeight = 50 ;
-    private float CurrentWeight;
+    public float MaxWeight = 50;
+    public float CurrentWeight;
 
 
     private GameObject[] slots;  
@@ -28,7 +33,7 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < SlotHolder.transform.childCount; i++)
             slots[i] = SlotHolder.transform.GetChild(i).gameObject;
 
-        InventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
+        inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
 
         RefreshUI();
 
@@ -48,14 +53,25 @@ public class InventoryManager : MonoBehaviour
                 slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 slots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
             }
+
+        currentWeightText.text = "Max Weight : " + CurrentWeight + " / 50 kg".ToString();
     }
 
     public void AddItem(ItemScriptableObject item)
     {
-
+            item = itemInfo.item;
+            float  totalWeight = item.Weight + CurrentWeight;
+         if (totalWeight <= MaxWeight)
+            {
             items.Add(item);
-          
+            CurrentWeight += item.Weight;
             RefreshUI();
+            }
+        else 
+        {
+            itemBoughtPanel.SetActive(false);
+            maxWeightReachedPanel.SetActive(true);
+        }
         
     }
 

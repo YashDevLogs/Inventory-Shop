@@ -36,7 +36,12 @@ public class ShopManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventService.Instance.OnItemBuy.InvokeEvent();
+        EventService.Instance.OnItemBuy.AddListener(BuyItem);
+    }
+
+    private void OnDisable()
+    {
+        EventService.Instance.OnItemBuy.RemoveListener(BuyItem);
     }
 
     private void Start()
@@ -46,11 +51,15 @@ public class ShopManager : MonoBehaviour
         ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
         TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
-        /*buyConfirmationButton.onClick.AddListener(BuyItem);*/
-        EventService.Instance.OnItemBuy.AddListener(BuyItem);
+        buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
     }
 
+
+    private void InvokeOnItemBuy()
+    {
+        EventService.Instance.OnItemBuy.InvokeEvent();
+    }
     private void ShowPanel(GameObject panelToShow)
     {
         MaterialPanel.SetActive(false);
@@ -61,8 +70,6 @@ public class ShopManager : MonoBehaviour
         panelToShow.SetActive(true);
     }
 
-
-
     public void ShowBuyConfirmationPanel()
     {
         BuyConfirmationPanel.SetActive(true);
@@ -70,9 +77,9 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem( )
     {
-        if(coinManager.Coins > 100)
+        item = itemDescriptionDisplay.item;
+        if (coinManager.Coins > item.BuyingPrice)
         {  
-            item = itemDescriptionDisplay.item;
             coinManager.DeductCoins(item.BuyingPrice);
             inventoryManager.AddItem(item);
             BuyConfirmationPanel.SetActive(false);
