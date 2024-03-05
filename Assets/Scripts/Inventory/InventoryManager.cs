@@ -15,15 +15,14 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject maxWeightReachedPanel;
     [SerializeField] private GameObject itemBoughtPanel;
 
+
     [SerializeField] private Button inventoryButton;
     [SerializeField] private ItemInfo itemInfo;
 
     [SerializeField] private Text currentWeightText;
 
-
     public float MaxWeight = 50;
     public float CurrentWeight;
-
 
     private GameObject[] slots;  
 
@@ -35,10 +34,11 @@ public class InventoryManager : MonoBehaviour
 
         inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
 
+
         RefreshUI();
-
-
     }
+
+
 
     private void RefreshUI()
     {
@@ -54,34 +54,31 @@ public class InventoryManager : MonoBehaviour
                 slots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
             }
 
-        currentWeightText.text = "Max Weight : " + CurrentWeight + " / 50 kg".ToString();
+        currentWeightText.text = "Weight : " + CurrentWeight + " / 50 kg Max".ToString();
     }
 
     public void AddItem(ItemScriptableObject item)
     {
-            item = itemInfo.item;
-            float  totalWeight = item.Weight + CurrentWeight;
-         if (totalWeight <= MaxWeight)
-            {
+      item = itemInfo.item;
+      float  totalWeight = item.Weight + CurrentWeight;
+        if (totalWeight <= MaxWeight)
+         {
             items.Add(item);
             CurrentWeight += item.Weight;
             RefreshUI();
-            }
-        else 
-        {
-            itemBoughtPanel.SetActive(false);
-            maxWeightReachedPanel.SetActive(true);
+            itemBoughtPanel.SetActive(true);
         }
-        
+        else 
+        {    
+            maxWeightReachedPanel.SetActive(true);           
+        }  
     }
-
     public void RemoveItem(ItemScriptableObject item)
     {
         items.Remove(item);
         CurrentWeight -= item.Weight;
     }
-
-    public void ShowPanel(GameObject panelToShow)
+    private void ShowPanel(GameObject panelToShow)
     {
         inventoryPanel.SetActive(false);
         descriptionPanel.SetActive(false);

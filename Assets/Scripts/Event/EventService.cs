@@ -16,9 +16,13 @@ public class EventService
     public EventController OnItemBuy { get; private set; }
     public EventController OnItemSell { get; private set; }
 
+    public EventController OnItemDescriptionShow { get; private set; }
+
     public EventService()
     {
         OnItemBuy = new EventController();
         OnItemSell = new EventController();
+        OnItemDescriptionShow = new EventController();
+
     }
 }

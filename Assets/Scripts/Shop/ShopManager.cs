@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
- 
 
-    public ItemScriptableObject item { get; set; }
+
+    [SerializeField] public ItemScriptableObject item { get; set; }
+
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
-
-    private bool canBuyItem;
-
 
     [SerializeField] private GameObject MaterialPanel;
     [SerializeField] private GameObject WeaponPanel;
@@ -22,7 +20,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject BuyConfirmationPanel; 
     [SerializeField] private GameObject itemBoughtPanel;
     [SerializeField] private GameObject notEnoughCoinsPanel;
-
 
     [SerializeField] private Button MaterialButton;
     [SerializeField] private Button WeaponButton;
@@ -37,6 +34,7 @@ public class ShopManager : MonoBehaviour
     private void OnEnable()
     {
         EventService.Instance.OnItemBuy.AddListener(BuyItem);
+        
     }
 
     private void OnDisable()
@@ -53,12 +51,13 @@ public class ShopManager : MonoBehaviour
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
         buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
-    }
 
+
+    }
 
     private void InvokeOnItemBuy()
     {
-        EventService.Instance.OnItemBuy.InvokeEvent();
+        EventService.Instance.OnItemBuy.InvokeEvent();    
     }
     private void ShowPanel(GameObject panelToShow)
     {
@@ -83,7 +82,7 @@ public class ShopManager : MonoBehaviour
             coinManager.DeductCoins(item.BuyingPrice);
             inventoryManager.AddItem(item);
             BuyConfirmationPanel.SetActive(false);
-            itemBoughtPanel.SetActive(true);
+      
         }
         else
         {

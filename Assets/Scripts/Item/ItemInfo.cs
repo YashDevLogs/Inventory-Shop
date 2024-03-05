@@ -1,38 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class ItemInfo : MonoBehaviour
 {
-    public ItemScriptableObject item;
+    [SerializeField] public ItemScriptableObject item;
 
-    public Image icon;
-    public Text nameText;
-    public Text descriptionText;
-    public Text buyPrice;
-    public Text sellPrice;
-    public Text quantity;
-    public Text weight;
-    public Text RarityType;
-    public Text BuyPanelName;
-    public Text BuyPanelPrice;
+    [SerializeField] private Image icon;
+    [SerializeField] private Text nameText;
+    [SerializeField] private Text descriptionText;
+    [SerializeField] private Text buyPrice;
+    [SerializeField] private Text sellPrice;
+    [SerializeField] private Text quantity;
+    [SerializeField] private Text weight;
+    [SerializeField] private Text RarityType;
+    [SerializeField] private Text BuyPanelName;
+    [SerializeField] private Text BuyPanelPrice;
 
 
-    public Image rarityButtonImage;
-    public Sprite veryCommonSprite;
-    public Sprite commonSprite;
-    public Sprite rareSprite;
-    public Sprite epicSprite;
-    public Sprite legendarySprite;
-    void Start()
-    { 
-
-    }
-
+    [SerializeField] private Image rarityButtonImage;
+    [SerializeField] private Sprite veryCommonSprite;
+    [SerializeField] private Sprite commonSprite;
+    [SerializeField] private Sprite rareSprite;
+    [SerializeField] private Sprite epicSprite;
+    [SerializeField] private Sprite legendarySprite;
     public void DisplayItemDescription(ItemScriptableObject item)
     {
         this.item = item;
@@ -46,9 +37,13 @@ public class ItemInfo : MonoBehaviour
         RarityType.text = "Rarity Type : " + item.Rarity;
 
         BuyPanelName.text = item.Name;
-        BuyPanelPrice.text = item.BuyingPrice.ToString(); 
+        BuyPanelPrice.text = item.BuyingPrice.ToString();
 
+        SetItemBackgroundImage(item);
+    }
 
+    public void SetItemBackgroundImage(ItemScriptableObject item)
+    {
         switch (item.Rarity)
         {
             case ItemRarity.VeryCommon:
@@ -71,6 +66,4 @@ public class ItemInfo : MonoBehaviour
                 break;
         }
     }
-
-
 }

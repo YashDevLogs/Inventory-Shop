@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0151fc25b55e902419d278af240fceb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  descriptionPanel: {fileID: 0}
+  item: {fileID: 11400000, guid: a5dde99ce5e40454c96fc05eaad150c9, type: 2}
+  shopDescriptionPanel: {fileID: 0}
   InventoryPanel: {fileID: 0}
   icon: {fileID: 5567217226102062980}
   nameText: {fileID: 5224541449965654836}
