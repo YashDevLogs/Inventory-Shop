@@ -1,36 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryItemDisplay : MonoBehaviour
 {
     public ItemScriptableObject item;
+
     [SerializeField] private GameObject itemSellPanel;
-    public GameObject InventorydescriptionPanel;
-
-    public Image icon;
-    public Text sellPrice;
-    public Text quantity;
-
-
-
+    public GameObject inventoryDescriptionPanel;
+    [SerializeField] private GameObject menuButtons;
+    [SerializeField] private GameObject ShopPanel;
 
     private void Start()
     {
-
-
-        GetComponent<Button>().onClick.AddListener(InventroyDescription);
+        GetComponent<Button>().onClick.AddListener(ShowDescription);
     }
 
-    private void InventroyDescription()
+    private void ShowDescription()
     {
-        InventorydescriptionPanel.SetActive(true);
 
-        itemSellPanel.SetActive(true);
-        Debug.Log("Button Clicked");
+        // Disable item sell panel
+        itemSellPanel.SetActive(false);
+        ShopPanel.SetActive(false);
+        menuButtons.SetActive(false);
+        
 
-        ItemInfo descriptionDisplay = InventorydescriptionPanel.GetComponent<ItemInfo>();
-        descriptionDisplay.DisplayItemDescription(item);
+        // Enable inventory description panel
+        inventoryDescriptionPanel.SetActive(true);
+
+        // Pass item information to the description panel
+        ItemInfo inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemInfo>();
+        inventoryDescriptionDisplay.DisplayItemDescription(item);
     }
 }

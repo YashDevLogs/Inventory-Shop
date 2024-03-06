@@ -47,6 +47,12 @@ public class MenuButtons : MonoBehaviour
         menuButtons.SetActive(false);
     }
 
+    public void OpenInventoryDescription()
+    {
+        ShopPanel.SetActive(false);
+        menuButtons.SetActive(false);
+    }
+
     public void PanelToClose(GameObject Panel)
     {
         if (Panel == ShopPanel )

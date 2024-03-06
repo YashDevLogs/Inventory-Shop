@@ -1,3 +1,5 @@
+using Assets.Scripts.Inventory;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +7,7 @@ using UnityEngine.UI;
 public class ItemInfo : MonoBehaviour
 {
     [SerializeField] public ItemScriptableObject item;
+    [SerializeField] public SlotClass slot;
 
     [SerializeField] private Image icon;
     [SerializeField] private Text nameText;
@@ -24,9 +27,24 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Sprite rareSprite;
     [SerializeField] private Sprite epicSprite;
     [SerializeField] private Sprite legendarySprite;
+
     public void DisplayItemDescription(ItemScriptableObject item)
     {
-        this.item = item;
+        if (item != null)
+        {
+            this.item = item;
+            Debug.Log("Item: " + item);
+        }
+        else if (item == null &&  slot != null) 
+        {
+            slot.GetItem();
+            item = this.item;
+        }
+        else
+        {
+            Debug.Log("Item Scriptable Object is Null");
+        }
+
         nameText.text = item.Name;
         icon.sprite = item.Icon;
         descriptionText.text = item.ItemDescription;

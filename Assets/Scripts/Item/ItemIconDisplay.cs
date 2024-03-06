@@ -25,16 +25,6 @@ public class ItemIconDisplay : MonoBehaviour
     [SerializeField] private Sprite legendarySprite;
 
 
-    private void OnEnable()
-    {
-        EventService.Instance.OnItemDescriptionShow.AddListener(DisplayDescription);
-    }
-
-    private void Onble()
-    {
-        EventService.Instance.OnItemDescriptionShow.AddListener(DisplayDescription);
-    }
-
     void Start()
     {
         nameText.text = item.Name;
@@ -66,10 +56,6 @@ public class ItemIconDisplay : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(ShowDescription);
     }
 
-    private void DisplayDescription()
-    {
-        
-    }
 
     void ShowDescription()
     {
