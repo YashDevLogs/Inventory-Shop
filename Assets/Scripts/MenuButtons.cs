@@ -13,9 +13,9 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private Button ShopCancleButton;
     [SerializeField] private Button BuyConfCancleButton;
     [SerializeField] private Button DescriptionCancleButton;
-    [SerializeField] private Button boughtCancleButton;
     [SerializeField] private Button NotEnoghMoneyCancleButton;
     [SerializeField] private Button NotEnoghSpaceCancleButton;
+    [SerializeField] private Button InventorypanelCancleButton;
 
 
     [SerializeField] private GameObject InventoryPanel;
@@ -25,6 +25,7 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private GameObject boughtPanel;
     [SerializeField] private GameObject NotEnoghMoneypanel;
     [SerializeField] private GameObject NotEnoghSpacepanel;
+    [SerializeField] private GameObject inventoryDescriptionPanel;
  
 
 
@@ -35,9 +36,9 @@ public class MenuButtons : MonoBehaviour
         ShopCancleButton.onClick.AddListener(() => PanelToClose(ShopPanel));
         BuyConfCancleButton.onClick.AddListener(() => PanelToClose(BuyConformationPanel));
         DescriptionCancleButton.onClick.AddListener(() => PanelToClose(DescriptionPanel));
-        boughtCancleButton.onClick.AddListener(() => PanelToClose(boughtPanel));
         NotEnoghMoneyCancleButton.onClick.AddListener(() => PanelToClose(NotEnoghMoneypanel));
         NotEnoghSpaceCancleButton.onClick.AddListener(() => PanelToClose(NotEnoghSpacepanel));
+        InventorypanelCancleButton.onClick.AddListener(() => PanelToClose(inventoryDescriptionPanel));
 
     }
 
@@ -49,8 +50,8 @@ public class MenuButtons : MonoBehaviour
 
     public void OpenInventoryDescription()
     {
-        ShopPanel.SetActive(false);
-        menuButtons.SetActive(false);
+            ShopPanel.SetActive(false);
+            menuButtons.SetActive(false);
     }
 
     public void PanelToClose(GameObject Panel)
@@ -60,6 +61,11 @@ public class MenuButtons : MonoBehaviour
             Panel.SetActive(false);
             MenuButtonsPanel.SetActive(true);
 
+        }
+        else if(Panel == inventoryDescriptionPanel)
+        {
+            inventoryDescriptionPanel.SetActive(false);
+            menuButtons.SetActive(true);
         }
         else
             Panel.SetActive(false);

@@ -21,6 +21,7 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Text BuyPanelPrice;
 
 
+
     [SerializeField] private Image rarityButtonImage;
     [SerializeField] private Sprite veryCommonSprite;
     [SerializeField] private Sprite commonSprite;
@@ -56,6 +57,7 @@ public class ItemInfo : MonoBehaviour
 
         BuyPanelName.text = item.Name;
         BuyPanelPrice.text = item.BuyingPrice.ToString();
+
 
         SetItemBackgroundImage(item);
     }
