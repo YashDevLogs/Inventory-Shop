@@ -36,6 +36,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private Text currentWeightText;
 
+
+
     public float MaxWeight = 50;
     public float CurrentWeight;
 

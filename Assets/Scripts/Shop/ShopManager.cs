@@ -29,6 +29,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button buyConfirmationButton;
 
 
+
     public ItemInfo itemDescriptionDisplay;
 
     private void OnEnable()
@@ -82,7 +83,6 @@ public class ShopManager : MonoBehaviour
             coinManager.DeductCoins(item.BuyingPrice);
             inventoryManager.AddItem(item);
             BuyConfirmationPanel.SetActive(false);
-      
         }
         else
         {
