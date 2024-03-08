@@ -3,58 +3,33 @@ using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
-    public static CoinManager Instance { get; private set; }
+    [SerializeField] Text coinsUI;
+    public float Coins;
 
-    public float Coins { get; private set; }
-    public Text CoinText;
-
-    [SerializeField] private GameObject NotEnoughCoinPanel;
-
-    private void Awake()
+    private void Update()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Start()
-    {
-        UpdateCoinText();
-    }
-
-    public void UpdateCoinText()
-    {
-        CoinText.text = "Coins: $" + Coins.ToString();
+        UpdateCoins();
     }
 
     public void AddCoins(float amount)
     {
         Coins += amount;
-        UpdateCoinText();
     }
 
     public bool DeductCoins(float amount)
     {
-        if (Coins >= amount)
+
+        Coins -= amount;
+        return true;
+    }
+
+    public void UpdateCoins()
+    {
+        if (coinsUI != null)
         {
-            Coins -= amount;
-            UpdateCoinText();
-            return true;
-        }
-        else
-        {
-            return false;
+            coinsUI.text = "$ " + Coins.ToString();
         }
     }
 
-    public void ShowNotEnoughCoinPanel()
-    {
-        NotEnoughCoinPanel.SetActive(true);
-    }
+
 }

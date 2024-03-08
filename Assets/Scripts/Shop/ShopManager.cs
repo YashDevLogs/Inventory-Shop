@@ -1,4 +1,5 @@
 
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,18 +7,19 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
 
-    public ItemScriptableObject item;
-    [SerializeField] private InventoryManager inventoryManager;   
-    
 
+    [SerializeField] public ItemScriptableObject item { get; set; }
+
+    [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private CoinManager coinManager;
 
     [SerializeField] private GameObject MaterialPanel;
     [SerializeField] private GameObject WeaponPanel;
     [SerializeField] private GameObject ConsumablesPanel;
     [SerializeField] private GameObject TreasurePanel; 
     [SerializeField] private GameObject BuyConfirmationPanel; 
-    [SerializeField] private GameObject ItemBoughtPanel; 
-    
+    [SerializeField] private GameObject itemBoughtPanel;
+    [SerializeField] private GameObject notEnoughCoinsPanel;
 
     [SerializeField] private Button MaterialButton;
     [SerializeField] private Button WeaponButton;
@@ -27,26 +29,36 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button buyConfirmationButton;
 
 
-    private bool canBuyItem;
+    public ItemInfo itemDescriptionDisplay;
 
+    private void OnEnable()
+    {
+        EventService.Instance.OnItemBuy.AddListener(BuyItem);
+        
+    }
 
-
-
+    private void OnDisable()
+    {
+        EventService.Instance.OnItemBuy.RemoveListener(BuyItem);
+    }
 
     private void Start()
     {
-
         MaterialButton.onClick.AddListener(() => ShowPanel(MaterialPanel));
         WeaponButton.onClick.AddListener(() => ShowPanel(WeaponPanel));
         ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
         TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
-        buyConfirmationButton.onClick.AddListener(BuyItem);
+        buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
-    
+
 
     }
 
+    private void InvokeOnItemBuy()
+    {
+        EventService.Instance.OnItemBuy.InvokeEvent();    
+    }
     private void ShowPanel(GameObject panelToShow)
     {
         MaterialPanel.SetActive(false);
@@ -57,43 +69,26 @@ public class ShopManager : MonoBehaviour
         panelToShow.SetActive(true);
     }
 
-
-
     public void ShowBuyConfirmationPanel()
     {
         BuyConfirmationPanel.SetActive(true);
-
     }
 
-    public void BuyItem()
+    public void BuyItem( )
     {
-/*        if (canBuyItem == true)
-        {
-        CoinManager.Instance.DeductCoins(item.BuyingPrice);*/
-        inventoryManager.AddItem(item);
-        Debug.Log("Item Bought");
-        BuyConfirmationPanel.SetActive(false);
-        ItemBoughtPanel.SetActive(true);
-/*
-        }
-        else if (canBuyItem == false)
-        {
-            CoinManager.Instance.ShowNotEnoughCoinPanel();
-        }*/
-    }
-
-    public void CanBuyItem()
-    {
-        if(CoinManager.Instance.Coins >= item.BuyingPrice)
-        {
-            canBuyItem = true;
+        item = itemDescriptionDisplay.item;
+        if (coinManager.Coins > item.BuyingPrice)
+        {  
+            coinManager.DeductCoins(item.BuyingPrice);
+            inventoryManager.AddItem(item);
+            BuyConfirmationPanel.SetActive(false);
+      
         }
         else
         {
-            canBuyItem = false;
+            notEnoughCoinsPanel.SetActive(true);
         }
 
     }
-
 }
 

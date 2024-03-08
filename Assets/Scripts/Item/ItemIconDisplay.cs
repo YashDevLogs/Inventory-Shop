@@ -7,31 +7,30 @@ using UnityEngine.UI;
 
 public class ItemIconDisplay : MonoBehaviour
 {
-    public ItemScriptableObject item;
-    public GameObject descriptionPanel;
-    public GameObject InventoryPanel;
 
-    public Image icon;
-    public Text nameText;
-    public Text buyPrice;
-    public Text quantity;
-    public Image rarityButtonImage;
-    public Sprite veryCommonSprite;
-    public Sprite commonSprite;
-    public Sprite rareSprite;
-    public Sprite epicSprite;
-    public Sprite legendarySprite;
+    [SerializeField] public ItemScriptableObject item;
 
+    [SerializeField] private GameObject shopDescriptionPanel;
+    [SerializeField] private GameObject InventoryPanel;
 
+    [SerializeField] private Image icon;
+    [SerializeField] private Text nameText;
+    [SerializeField] private Text buyPrice;
+    [SerializeField] private Text quantity;
+    [SerializeField] private Image rarityButtonImage;  
+    [SerializeField] private Sprite veryCommonSprite;
+    [SerializeField] private Sprite commonSprite;
+    [SerializeField] private Sprite rareSprite;
+    [SerializeField] private Sprite epicSprite;
+    [SerializeField] private Sprite legendarySprite;
 
 
     void Start()
     {
         nameText.text = item.Name;
         icon.sprite = item.Icon;
-        buyPrice.text = "$" + item.BuyingPrice.ToString(); 
+        buyPrice.text = "$" + item.BuyingPrice.ToString();
         quantity.text = "x" + item.Quantity.ToString();
-
 
         switch (item.Rarity)
         {
@@ -53,11 +52,10 @@ public class ItemIconDisplay : MonoBehaviour
             default:
                 Debug.LogWarning("Invalid rarity type");
                 break;
-
-                
         }
         GetComponent<Button>().onClick.AddListener(ShowDescription);
     }
+
 
     void ShowDescription()
     {
@@ -65,10 +63,10 @@ public class ItemIconDisplay : MonoBehaviour
        InventoryPanel.SetActive(false);
 
         // Enable description panel
-        descriptionPanel.SetActive(true);
+        shopDescriptionPanel.SetActive(true);
 
         // Pass item information to the description panel
-        ItemDescriptionDisplay descriptionDisplay = descriptionPanel.GetComponent<ItemDescriptionDisplay>();
+        ItemInfo descriptionDisplay = shopDescriptionPanel.GetComponent<ItemInfo>();
         descriptionDisplay.DisplayItemDescription(item);
     }
 
