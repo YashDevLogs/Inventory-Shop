@@ -60,10 +60,12 @@ public class ItemIconDisplay : MonoBehaviour
     void ShowDescription()
     {
         // Disable inventory panel
-       InventoryPanel.SetActive(false);
+        InventoryPanel.SetActive(false);
+        Debug.Log("Inventory panel closed");
 
         // Enable description panel
         shopDescriptionPanel.SetActive(true);
+        Debug.Log("Shop panel Set active");
 
         // Pass item information to the description panel
         ItemInfo descriptionDisplay = shopDescriptionPanel.GetComponent<ItemInfo>();

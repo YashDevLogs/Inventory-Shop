@@ -8,9 +8,13 @@ using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
+
+    [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private Transform slotContainer;
+
     [SerializeField] public ItemScriptableObject item { get; set; }
 
-    [SerializeField] private GameObject SlotHolder;
+
 
     public List<SlotClass> items = new List<SlotClass>();
 
@@ -36,12 +40,11 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private Text currentWeightText;
 
-
+    private List<GameObject> slots = new List<GameObject>();
 
     public float MaxWeight = 50;
     public float CurrentWeight;
 
-    private GameObject[] slots;
 
     private void OnEnable()
     {
@@ -49,57 +52,60 @@ public class InventoryManager : MonoBehaviour
 
     }
 
- 
     private void OnDisable()
     {
         EventService.Instance.OnItemSell.RemoveListener(SellItem);
     }
 
 
-
-
-
     private void Start()
     {
-        slots = new GameObject[SlotHolder.transform.childCount];
-        for (int i = 0; i < SlotHolder.transform.childCount; i++)
-            slots[i] = SlotHolder.transform.GetChild(i).gameObject;
+        InstantiateSlots();
 
         inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
-
-        RefreshUI();
 
         SellButton.onClick.AddListener(ShowSellConfirmationPanel);
         SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
     }
 
+    private void InstantiateSlots()
+    {
+        ClearSlots();
+
+        foreach (SlotClass slot in items)
+        {
+            GameObject slotObject = Instantiate(slotPrefab, slotContainer);
+            slots.Add(slotObject);
+
+            Image imageComponent = slotObject.transform.GetChild(0).GetComponent<Image>();
+            if (imageComponent != null)
+            {
+                imageComponent.enabled = true;
+                imageComponent.sprite = slot.GetItem().Icon;
+            }
+
+            Text textComponent = slotObject.transform.GetChild(1).GetComponent<Text>();
+            if (textComponent != null)
+            {
+                textComponent.text = slot.GetQuantity() + " ";
+            }
+
+            Button buttonComponent = slotObject.GetComponent<Button>();
+            if (buttonComponent != null)
+            {
+                buttonComponent.onClick.RemoveAllListeners(); // Clear existing listeners
+                buttonComponent.onClick.AddListener(() => ShowDescriptionPanel(slot.GetItem())); // Add new listener
+            }
+        }
+
+        currentWeightText.text = "Weight : " + CurrentWeight + " / 50 kg Max";
+    }
+
+
+
     private void InvokeOnItemBuy()
     {
         EventService.Instance.OnItemSell.InvokeEvent();
-    }
-
-    private void RefreshUI()
-    {
-        for (int i = 0; i < slots.Length; i++)
-            try
-            {
-                SlotClass slot = items[i];
-                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
-                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = slot.GetItem().Icon;
-                slots[i].transform.GetChild(1).GetComponent<Text>().text = slot.GetQuantity() + " ";
-                // Add the respective scriptable item to the slot's button component
-                Button slotButton = slots[i].GetComponent<Button>();
-                slotButton.onClick.RemoveAllListeners(); // Clear existing listeners
-                slotButton.onClick.AddListener(() => ShowDescriptionPanel(slot.GetItem())); // Add new listener
-            }
-            catch
-            {
-                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
-                slots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
-                slots[i].transform.GetChild(1).GetComponent<Text>().text = "";
-            }
-
-        currentWeightText.text = "Weight : " + CurrentWeight + " / 50 kg Max".ToString();
     }
 
 
@@ -117,8 +123,6 @@ public class InventoryManager : MonoBehaviour
         // Show the description panel with the selected item information
         inventoryDescriptionPanel.SetActive(true);
         Debug.Log("inventoryDescriptionPanel enabled from Inventory manager");
-        /* itemInfo.DisplayItemDescription(item);
-         Debug.Log("Info From Inventroy manager passed");*/
 
         ItemInfo inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemInfo>();
         inventoryDescriptionDisplay.DisplayItemDescription(item);
@@ -136,7 +140,7 @@ public class InventoryManager : MonoBehaviour
             {
                 items.Add(new SlotClass(item, 1));
                 CurrentWeight += item.Weight;
-                RefreshUI();
+                InstantiateSlots();
                 itemBoughtPanel.SetActive(true);
                 StartCoroutine(HideBoughtPanel());
             }
@@ -182,7 +186,7 @@ public class InventoryManager : MonoBehaviour
             return false;
         }
 
-        RefreshUI();
+        InstantiateSlots();
         return true;
     }
 
@@ -201,6 +205,15 @@ public class InventoryManager : MonoBehaviour
             if (slot.GetItem() == item) return slot;
         }
         return null;
+    }
+
+    private void ClearSlots()
+    {
+        foreach (GameObject slot in slots)
+        {
+            Destroy(slot);
+        }
+        slots.Clear();
     }
 
     private void SellItem()

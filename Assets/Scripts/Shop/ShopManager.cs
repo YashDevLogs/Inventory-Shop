@@ -1,5 +1,7 @@
 
 using JetBrains.Annotations;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,22 +15,27 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
 
-    [SerializeField] private GameObject MaterialPanel;
-    [SerializeField] private GameObject WeaponPanel;
-    [SerializeField] private GameObject ConsumablesPanel;
-    [SerializeField] private GameObject TreasurePanel; 
+    private List<ItemScriptableObject> currentItems;
+
+    [SerializeField] private GameObject itemPanel;
     [SerializeField] private GameObject BuyConfirmationPanel; 
     [SerializeField] private GameObject itemBoughtPanel;
     [SerializeField] private GameObject notEnoughCoinsPanel;
 
-    [SerializeField] private Button MaterialButton;
-    [SerializeField] private Button WeaponButton;
-    [SerializeField] private Button ConsumablesButton;
-    [SerializeField] private Button TreasureButton;
+
+    [SerializeField] private Button materialButton;
+    [SerializeField] private Button weaponButton;
+    [SerializeField] private Button consumablesButton;
+    [SerializeField] private Button treasureButton;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button buyConfirmationButton;
 
 
+    [SerializeField] private List<ItemScriptableObject> allItems = new List<ItemScriptableObject>();
+
+
+
+    [SerializeField] private GameObject slotPrefab;
 
     public ItemInfo itemDescriptionDisplay;
 
@@ -45,22 +52,42 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        MaterialButton.onClick.AddListener(() => ShowPanel(MaterialPanel));
-        WeaponButton.onClick.AddListener(() => ShowPanel(WeaponPanel));
-        ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
-        TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
         buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
+        // Add onClick events to type buttons
+        materialButton.onClick.AddListener(() => SetItemType(ItemType.Material));
+        weaponButton.onClick.AddListener(() => SetItemType(ItemType.Weapon));
+        consumablesButton.onClick.AddListener(() => SetItemType(ItemType.Consumable));
+        treasureButton.onClick.AddListener(() => SetItemType(ItemType.Treasure));
+
+        // Initially populate the panel with all items
+/*        PopulatePanel(allItems);*/
+
+    }
 
 
+    private void PopulatePanel(List<ItemScriptableObject> items)
+    {
+        // Clear existing items in the panel
+        foreach (Transform child in itemPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Instantiate new items in the panel
+        foreach (ItemScriptableObject item in items)
+        {
+            GameObject slot = Instantiate(slotPrefab, itemPanel.transform);
+            slot.GetComponent<ItemIconDisplay>().item = item;
+        }
     }
 
     private void InvokeOnItemBuy()
     {
         EventService.Instance.OnItemBuy.InvokeEvent();    
     }
-    private void ShowPanel(GameObject panelToShow)
+/*    private void ShowPanel(GameObject panelToShow)
     {
         MaterialPanel.SetActive(false);
         WeaponPanel.SetActive(false);
@@ -68,7 +95,7 @@ public class ShopManager : MonoBehaviour
         TreasurePanel.SetActive(false);
 
         panelToShow.SetActive(true);
-    }
+    }*/
 
     public void ShowBuyConfirmationPanel()
     {
@@ -89,6 +116,13 @@ public class ShopManager : MonoBehaviour
             notEnoughCoinsPanel.SetActive(true);
         }
 
+    }
+
+    public void SetItemType(ItemType type)
+    {
+        // Filter items by type
+        currentItems = allItems.Where(item => item.ItemType == type).ToList();
+        PopulatePanel(currentItems);
     }
 }
 

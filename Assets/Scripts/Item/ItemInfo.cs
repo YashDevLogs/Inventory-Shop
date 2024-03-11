@@ -17,8 +17,8 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Text quantity;
     [SerializeField] private Text weight;
     [SerializeField] private Text RarityType;
-    [SerializeField] private Text BuyPanelName;
-    [SerializeField] private Text BuyPanelPrice;
+/*    [SerializeField] private Text BuyPanelName;
+    [SerializeField] private Text BuyPanelPrice;*/
 
 
 
@@ -55,8 +55,8 @@ public class ItemInfo : MonoBehaviour
         weight.text = "Weight: " + item.Weight.ToString() + "kg";
         RarityType.text = "Rarity Type : " + item.Rarity;
 
-        BuyPanelName.text = item.Name;
-        BuyPanelPrice.text = item.BuyingPrice.ToString();
+/*        BuyPanelName.text = item.Name;
+        BuyPanelPrice.text = item.BuyingPrice.ToString();*/
 
 
         SetItemBackgroundImage(item);
