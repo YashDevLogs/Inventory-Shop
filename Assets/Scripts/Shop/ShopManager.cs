@@ -14,6 +14,8 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
+    [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private GameObject inventorypanel;
 
     private List<ItemScriptableObject> currentItems;
 
@@ -80,22 +82,17 @@ public class ShopManager : MonoBehaviour
         {
             GameObject slot = Instantiate(slotPrefab, itemPanel.transform);
             slot.GetComponent<ItemIconDisplay>().item = item;
+            slot.GetComponent<ItemIconDisplay>().shopDescriptionPanel = descriptionPanel;
+            slot.GetComponent<ItemIconDisplay>().InventoryPanel = inventorypanel;
         }
     }
+    
 
     private void InvokeOnItemBuy()
     {
         EventService.Instance.OnItemBuy.InvokeEvent();    
     }
-/*    private void ShowPanel(GameObject panelToShow)
-    {
-        MaterialPanel.SetActive(false);
-        WeaponPanel.SetActive(false);
-        ConsumablesPanel.SetActive(false);
-        TreasurePanel.SetActive(false);
 
-        panelToShow.SetActive(true);
-    }*/
 
     public void ShowBuyConfirmationPanel()
     {

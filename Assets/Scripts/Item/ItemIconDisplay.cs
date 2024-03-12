@@ -10,8 +10,8 @@ public class ItemIconDisplay : MonoBehaviour
 
     [SerializeField] public ItemScriptableObject item;
 
-    [SerializeField] private GameObject shopDescriptionPanel;
-    [SerializeField] private GameObject InventoryPanel;
+    [SerializeField] public GameObject shopDescriptionPanel;
+    [SerializeField] public GameObject InventoryPanel;
 
     [SerializeField] private Image icon;
     [SerializeField] private Text nameText;
