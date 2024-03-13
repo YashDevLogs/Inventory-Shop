@@ -7,11 +7,10 @@ using UnityEngine.UI;
 
 public class ItemIconDisplay : MonoBehaviour
 {
-
     [SerializeField] public ItemScriptableObject item;
 
-    [SerializeField] private GameObject shopDescriptionPanel;
-    [SerializeField] private GameObject InventoryPanel;
+    [SerializeField] public GameObject shopDescriptionPanel;
+    [SerializeField] public GameObject InventoryPanel;
 
     [SerializeField] private Image icon;
     [SerializeField] private Text nameText;
@@ -23,7 +22,6 @@ public class ItemIconDisplay : MonoBehaviour
     [SerializeField] private Sprite rareSprite;
     [SerializeField] private Sprite epicSprite;
     [SerializeField] private Sprite legendarySprite;
-
 
     void Start()
     {
@@ -56,14 +54,15 @@ public class ItemIconDisplay : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(ShowDescription);
     }
 
-
     void ShowDescription()
     {
         // Disable inventory panel
-       InventoryPanel.SetActive(false);
+        InventoryPanel.SetActive(false);
+        Debug.Log("Inventory panel closed");
 
         // Enable description panel
         shopDescriptionPanel.SetActive(true);
+        Debug.Log("Shop panel Set active");
 
         // Pass item information to the description panel
         ItemInfo descriptionDisplay = shopDescriptionPanel.GetComponent<ItemInfo>();

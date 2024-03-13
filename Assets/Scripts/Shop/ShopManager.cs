@@ -1,41 +1,44 @@
 
 using JetBrains.Annotations;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class ShopManager : MonoBehaviour
 {
-
-
     [SerializeField] public ItemScriptableObject item { get; set; }
 
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
+    [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private InputField quantity;
+    [SerializeField] private GameObject inventorypanel;
 
-    [SerializeField] private GameObject MaterialPanel;
-    [SerializeField] private GameObject WeaponPanel;
-    [SerializeField] private GameObject ConsumablesPanel;
-    [SerializeField] private GameObject TreasurePanel; 
+    private List<ItemScriptableObject> currentItems;
+
+    [SerializeField] private GameObject itemPanel;
     [SerializeField] private GameObject BuyConfirmationPanel; 
     [SerializeField] private GameObject itemBoughtPanel;
     [SerializeField] private GameObject notEnoughCoinsPanel;
 
-    [SerializeField] private Button MaterialButton;
-    [SerializeField] private Button WeaponButton;
-    [SerializeField] private Button ConsumablesButton;
-    [SerializeField] private Button TreasureButton;
+    [SerializeField] private Button materialButton;
+    [SerializeField] private Button weaponButton;
+    [SerializeField] private Button consumablesButton;
+    [SerializeField] private Button treasureButton;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button buyConfirmationButton;
 
+    [SerializeField] private List<ItemScriptableObject> allItems = new List<ItemScriptableObject>();
 
+    [SerializeField] private GameObject slotPrefab;
 
     public ItemInfo itemDescriptionDisplay;
 
     private void OnEnable()
     {
         EventService.Instance.OnItemBuy.AddListener(BuyItem);
-        
     }
 
     private void OnDisable()
@@ -45,29 +48,34 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        MaterialButton.onClick.AddListener(() => ShowPanel(MaterialPanel));
-        WeaponButton.onClick.AddListener(() => ShowPanel(WeaponPanel));
-        ConsumablesButton.onClick.AddListener(() => ShowPanel(ConsumablesPanel));
-        TreasureButton.onClick.AddListener(() => ShowPanel(TreasurePanel));
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
         buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
+        materialButton.onClick.AddListener(() => SetItemType(ItemType.Material));
+        weaponButton.onClick.AddListener(() => SetItemType(ItemType.Weapon));
+        consumablesButton.onClick.AddListener(() => SetItemType(ItemType.Consumable));
+        treasureButton.onClick.AddListener(() => SetItemType(ItemType.Treasure));
+    }
 
+    private void PopulatePanel(List<ItemScriptableObject> items)
+    {
+        foreach (Transform child in itemPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
+        foreach (ItemScriptableObject item in items)
+        {
+            GameObject slot = Instantiate(slotPrefab, itemPanel.transform);
+            slot.GetComponent<ItemIconDisplay>().item = item;
+            slot.GetComponent<ItemIconDisplay>().shopDescriptionPanel = descriptionPanel;
+            slot.GetComponent<ItemIconDisplay>().InventoryPanel = inventorypanel;
+        }
     }
 
     private void InvokeOnItemBuy()
     {
         EventService.Instance.OnItemBuy.InvokeEvent();    
-    }
-    private void ShowPanel(GameObject panelToShow)
-    {
-        MaterialPanel.SetActive(false);
-        WeaponPanel.SetActive(false);
-        ConsumablesPanel.SetActive(false);
-        TreasurePanel.SetActive(false);
-
-        panelToShow.SetActive(true);
     }
 
     public void ShowBuyConfirmationPanel()
@@ -88,7 +96,12 @@ public class ShopManager : MonoBehaviour
         {
             notEnoughCoinsPanel.SetActive(true);
         }
+    }
 
+    public void SetItemType(ItemType type)
+    {
+        currentItems = allItems.Where(item => item.ItemType == type).ToList();
+        PopulatePanel(currentItems);
     }
 }
 

@@ -17,10 +17,6 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Text quantity;
     [SerializeField] private Text weight;
     [SerializeField] private Text RarityType;
-    [SerializeField] private Text BuyPanelName;
-    [SerializeField] private Text BuyPanelPrice;
-
-
 
     [SerializeField] private Image rarityButtonImage;
     [SerializeField] private Sprite veryCommonSprite;
@@ -54,10 +50,6 @@ public class ItemInfo : MonoBehaviour
         quantity.text = "Quantity: x" + item.Quantity.ToString();
         weight.text = "Weight: " + item.Weight.ToString() + "kg";
         RarityType.text = "Rarity Type : " + item.Rarity;
-
-        BuyPanelName.text = item.Name;
-        BuyPanelPrice.text = item.BuyingPrice.ToString();
-
 
         SetItemBackgroundImage(item);
     }
