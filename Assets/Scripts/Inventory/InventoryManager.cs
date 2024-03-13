@@ -11,15 +11,11 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotContainer;
-
     [SerializeField] public ItemScriptableObject item { get; set; }
-
-
 
     public List<SlotClass> items = new List<SlotClass>();
 
     [SerializeField] private CoinManager coinManager;
-
 
     [SerializeField] private GameObject itemSellPanel;
     [SerializeField] private GameObject menuButtons;
@@ -44,12 +40,9 @@ public class InventoryManager : MonoBehaviour
 
     public float MaxWeight = 50;
     public float CurrentWeight;
-
-
     private void OnEnable()
     {
         EventService.Instance.OnItemSell.AddListener(SellItem);
-
     }
 
     private void OnDisable()
@@ -57,13 +50,11 @@ public class InventoryManager : MonoBehaviour
         EventService.Instance.OnItemSell.RemoveListener(SellItem);
     }
 
-
     private void Start()
     {
         InstantiateSlots();
 
         inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
-
         SellButton.onClick.AddListener(ShowSellConfirmationPanel);
         SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
     }
@@ -101,13 +92,10 @@ public class InventoryManager : MonoBehaviour
         currentWeightText.text = "Weight : " + CurrentWeight + " / 50 kg Max";
     }
 
-
-
     private void InvokeOnItemBuy()
     {
         EventService.Instance.OnItemSell.InvokeEvent();
     }
-
 
     public void ShowSellConfirmationPanel()
     {
@@ -122,12 +110,10 @@ public class InventoryManager : MonoBehaviour
 
         // Show the description panel with the selected item information
         inventoryDescriptionPanel.SetActive(true);
-        Debug.Log("inventoryDescriptionPanel enabled from Inventory manager");
 
         ItemInfo inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemInfo>();
         inventoryDescriptionDisplay.DisplayItemDescription(item);
     }
-
     public void AddItem(ItemScriptableObject item)
     {
         float totalWeight = item.Weight + CurrentWeight;

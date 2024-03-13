@@ -8,13 +8,12 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-
-
     [SerializeField] public ItemScriptableObject item { get; set; }
 
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
     [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private InputField quantity;
     [SerializeField] private GameObject inventorypanel;
 
     private List<ItemScriptableObject> currentItems;
@@ -24,7 +23,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject itemBoughtPanel;
     [SerializeField] private GameObject notEnoughCoinsPanel;
 
-
     [SerializeField] private Button materialButton;
     [SerializeField] private Button weaponButton;
     [SerializeField] private Button consumablesButton;
@@ -32,10 +30,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button buyButton;
     [SerializeField] private Button buyConfirmationButton;
 
-
     [SerializeField] private List<ItemScriptableObject> allItems = new List<ItemScriptableObject>();
-
-
 
     [SerializeField] private GameObject slotPrefab;
 
@@ -44,7 +39,6 @@ public class ShopManager : MonoBehaviour
     private void OnEnable()
     {
         EventService.Instance.OnItemBuy.AddListener(BuyItem);
-        
     }
 
     private void OnDisable()
@@ -57,27 +51,19 @@ public class ShopManager : MonoBehaviour
         buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
         buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
-        // Add onClick events to type buttons
         materialButton.onClick.AddListener(() => SetItemType(ItemType.Material));
         weaponButton.onClick.AddListener(() => SetItemType(ItemType.Weapon));
         consumablesButton.onClick.AddListener(() => SetItemType(ItemType.Consumable));
         treasureButton.onClick.AddListener(() => SetItemType(ItemType.Treasure));
-
-        // Initially populate the panel with all items
-/*        PopulatePanel(allItems);*/
-
     }
-
 
     private void PopulatePanel(List<ItemScriptableObject> items)
     {
-        // Clear existing items in the panel
         foreach (Transform child in itemPanel.transform)
         {
             Destroy(child.gameObject);
         }
 
-        // Instantiate new items in the panel
         foreach (ItemScriptableObject item in items)
         {
             GameObject slot = Instantiate(slotPrefab, itemPanel.transform);
@@ -86,13 +72,11 @@ public class ShopManager : MonoBehaviour
             slot.GetComponent<ItemIconDisplay>().InventoryPanel = inventorypanel;
         }
     }
-    
 
     private void InvokeOnItemBuy()
     {
         EventService.Instance.OnItemBuy.InvokeEvent();    
     }
-
 
     public void ShowBuyConfirmationPanel()
     {
@@ -112,12 +96,10 @@ public class ShopManager : MonoBehaviour
         {
             notEnoughCoinsPanel.SetActive(true);
         }
-
     }
 
     public void SetItemType(ItemType type)
     {
-        // Filter items by type
         currentItems = allItems.Where(item => item.ItemType == type).ToList();
         PopulatePanel(currentItems);
     }

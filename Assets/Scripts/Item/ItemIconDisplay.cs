@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ItemIconDisplay : MonoBehaviour
 {
-
     [SerializeField] public ItemScriptableObject item;
 
     [SerializeField] public GameObject shopDescriptionPanel;
@@ -23,7 +22,6 @@ public class ItemIconDisplay : MonoBehaviour
     [SerializeField] private Sprite rareSprite;
     [SerializeField] private Sprite epicSprite;
     [SerializeField] private Sprite legendarySprite;
-
 
     void Start()
     {
@@ -55,7 +53,6 @@ public class ItemIconDisplay : MonoBehaviour
         }
         GetComponent<Button>().onClick.AddListener(ShowDescription);
     }
-
 
     void ShowDescription()
     {
