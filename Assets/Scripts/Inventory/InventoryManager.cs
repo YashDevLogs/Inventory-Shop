@@ -1,4 +1,5 @@
 using Assets.Scripts.Inventory;
+using ServiceLocator.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,32 +10,35 @@ using static UnityEditor.Progress;
 public class InventoryManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject slotPrefab;
-    [SerializeField] private Transform slotContainer;
-    [SerializeField] public ItemScriptableObject item { get; set; }
+    private GameObject slotPrefab;
+    private Transform slotContainer;
+
+
+    [SerializeField]private ItemScriptableObject item;
 
     public List<SlotClass> items = new List<SlotClass>();
 
     [SerializeField] private CoinManager coinManager;
 
-    [SerializeField] private GameObject itemSellPanel;
-    [SerializeField] private GameObject menuButtons;
+    private GameObject itemSellPanel;
+    private GameObject menuButtons;
     [SerializeField] private Button SellButton;
-    [SerializeField] private Button SellConfirmationButton;
-    [SerializeField] private GameObject ShopPanel;
+    [SerializeField]private Button SellConfirmationButton;
+    private GameObject ShopPanel;
 
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private GameObject shopDescriptionPanel;
-    [SerializeField] private GameObject inventoryDescriptionPanel;
-    [SerializeField] private GameObject maxWeightReachedPanel;
-    [SerializeField] private GameObject itemBoughtPanel;
+    private GameObject inventoryPanel;
+    private GameObject shopDescriptionPanel;
+    private GameObject inventoryDescriptionPanel;
+    private GameObject maxWeightReachedPanel;
+    private GameObject itemBoughtPanel;
     [SerializeField] private GameObject SellConfirmationPanel;
 
-    [SerializeField] private Button inventoryButton;
-    [SerializeField] private ItemInfo itemDescriptionDisplay;
+    private Button inventoryButton;
+
+    private ItemInfo itemDescriptionDisplay;
     [SerializeField] private SlotClass slotClass;
 
-    [SerializeField] private Text currentWeightText;
+    private Text currentWeightText;
 
     private List<GameObject> slots = new List<GameObject>();
 
@@ -50,13 +54,31 @@ public class InventoryManager : MonoBehaviour
         EventService.Instance.OnItemSell.RemoveListener(SellItem);
     }
 
-    private void Start()
+    private void Awake()
     {
-        InstantiateSlots();
 
+
+    }
+
+
+    public InventoryManager(Button SellButton, Button SellConfirmationButton, GameObject inventoryPanel, GameObject shopDescriptionPanel, Button inventoryButton, Text currentWeightText, GameObject slotPrefab, Transform slotContainer, GameObject itemBoughtPanel, GameObject maxWeightReachedPanel, GameObject shopPanel, GameObject inventoryDescriptionPanel, GameObject menuButtons, GameObject itemSellPanel)
+    {
+        // Initialize other variables
+        this.inventoryPanel = inventoryPanel;
+        this.shopDescriptionPanel = shopDescriptionPanel;
+        this.inventoryButton = inventoryButton;
+        this.currentWeightText = currentWeightText;
+        this.slotPrefab = slotPrefab;
+        this.slotContainer = slotContainer;
+        this.itemBoughtPanel = itemBoughtPanel;
+        this.maxWeightReachedPanel = maxWeightReachedPanel;
+        this.ShopPanel = shopPanel;
+        this.inventoryDescriptionPanel = inventoryDescriptionPanel;
+        this.menuButtons = menuButtons;
+        this.itemSellPanel = itemSellPanel;
+
+        InstantiateSlots();
         inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
-        SellButton.onClick.AddListener(ShowSellConfirmationPanel);
-        SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
     }
 
     private void InstantiateSlots()
@@ -100,6 +122,7 @@ public class InventoryManager : MonoBehaviour
     public void ShowSellConfirmationPanel()
     {
         SellConfirmationPanel.SetActive(true);
+        Debug.Log("Sell confirmation panel displayed");
     }
     private void ShowDescriptionPanel(ItemScriptableObject item)
     {
@@ -128,7 +151,6 @@ public class InventoryManager : MonoBehaviour
                 CurrentWeight += item.Weight;
                 InstantiateSlots();
                 itemBoughtPanel.SetActive(true);
-                StartCoroutine(HideBoughtPanel());
             }
         }
         else
@@ -137,11 +159,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    IEnumerator HideBoughtPanel()
-    {
-        yield return new WaitForSeconds(1f);
-        itemBoughtPanel.SetActive(false);
-    }
 
     public bool RemoveItem(ItemScriptableObject item)
     {
@@ -191,6 +208,20 @@ public class InventoryManager : MonoBehaviour
             if (slot.GetItem() == item) return slot;
         }
         return null;
+    }
+
+
+    public void SetupSellButton(Button sellButton)
+    {
+        this.SellButton = sellButton;
+        SellButton.onClick.AddListener(ShowSellConfirmationPanel);
+    }
+
+    public void SetupSellConfirmationButton(Button sellConfirmationButton)
+    {
+        this.SellConfirmationButton = sellConfirmationButton;
+
+        SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
     }
 
     private void ClearSlots()

@@ -123,6 +123,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &22598463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22598465}
+  - component: {fileID: 22598464}
+  m_Layer: 0
+  m_Name: GameService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &22598464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22598463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f72ff9485fce94ea1aad5083a5b59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 1964691078}
+  inventoryPanel: {fileID: 943897740}
+  inventoryButton: {fileID: 974026961}
+  slotPrefab: {fileID: 8255806383083770988, guid: 9391d0d21a0cafc4d80cae93dedcc222, type: 3}
+  slotContainer: {fileID: 743534255}
+  currentWeightText: {fileID: 1849451647}
+  shopDescriptionPanel: {fileID: 2291578282702055858}
+  maxWeightReachedPanel: {fileID: 380281543}
+  itemBoughtPanel: {fileID: 1609706281}
+  ShopPanel: {fileID: 1238223576}
+  inventoryDescriptionPanel: {fileID: 478746073}
+  SellButton: {fileID: 1677266991}
+  SellConfirmationButton: {fileID: 1144535360}
+  menuButtons: {fileID: 1747593638}
+  itemSellPanel: {fileID: 1007374647}
+--- !u!4 &22598465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22598463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 972.3963, y: 544.71106, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &30545498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +3004,108 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
   m_PrefabInstance: {fileID: 497853258}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &735173283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1609706282}
+    m_Modifications:
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 29.0243
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053414218786572073, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+      propertyPath: m_Name
+      value: 'ClosePanelButton '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+--- !u!224 &735173284 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
+  m_PrefabInstance: {fileID: 735173283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &743121613
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,7 +5670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f334b6f8531041c4ba36c64846e7e9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 1964691078}
   maxWeight: 50
   currentWeight: 0
   veryCommonProbability: 50
@@ -5656,9 +5816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d31082f8ced974a9f3dc9f437902a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 1964691078}
   coinManager: {fileID: 959804835}
   descriptionPanel: {fileID: 2291578282702055858}
+  quantity: {fileID: 0}
   inventorypanel: {fileID: 943897740}
   itemPanel: {fileID: 478893752}
   BuyConfirmationPanel: {fileID: 1785869582}
@@ -6960,6 +7120,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1286959071}
+  - {fileID: 735173284}
   m_Father: {fileID: 798537391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7907,7 +8068,6 @@ MonoBehaviour:
   ShopPanel: {fileID: 1238223576}
   ShopButton: {fileID: 140157846}
   menuButtons: {fileID: 1747593638}
-  cancleButton: {fileID: 0}
 --- !u!1 &1773480244
 GameObject:
   m_ObjectHideFlags: 0
@@ -8604,27 +8764,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9606e0d90e91b9545885d6d90e4fcac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 8255806383083770988, guid: 9391d0d21a0cafc4d80cae93dedcc222, type: 3}
-  slotContainer: {fileID: 743534255}
+  item: {fileID: 0}
   items: []
   coinManager: {fileID: 959804835}
-  itemSellPanel: {fileID: 1007374647}
-  menuButtons: {fileID: 1747593638}
   SellButton: {fileID: 1677266991}
   SellConfirmationButton: {fileID: 1144535360}
-  ShopPanel: {fileID: 1238223576}
-  inventoryPanel: {fileID: 943897740}
-  shopDescriptionPanel: {fileID: 2291578282702055858}
-  inventoryDescriptionPanel: {fileID: 478746073}
-  maxWeightReachedPanel: {fileID: 380281543}
-  itemBoughtPanel: {fileID: 1609706281}
   SellConfirmationPanel: {fileID: 1007374647}
-  inventoryButton: {fileID: 974026961}
-  itemDescriptionDisplay: {fileID: 478746075}
   slotClass:
     item: {fileID: 0}
     quantity: 0
-  currentWeightText: {fileID: 1849451647}
   MaxWeight: 50
   CurrentWeight: 0
 --- !u!4 &1964691079
@@ -10757,3 +10905,4 @@ SceneRoots:
   - {fileID: 169373677}
   - {fileID: 2097835100}
   - {fileID: 931890550}
+  - {fileID: 22598465}

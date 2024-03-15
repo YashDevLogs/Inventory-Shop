@@ -10,7 +10,6 @@ public class ShopManager : MonoBehaviour
 {
     [SerializeField] public ItemScriptableObject item { get; set; }
 
-    [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private CoinManager coinManager;
     [SerializeField] private GameObject descriptionPanel;
     [SerializeField] private InputField quantity;
@@ -89,7 +88,7 @@ public class ShopManager : MonoBehaviour
         if (coinManager.Coins > item.BuyingPrice)
         {  
             coinManager.DeductCoins(item.BuyingPrice);
-            inventoryManager.AddItem(item);
+            GameService.Instance.inventoryManager.AddItem(item);
             BuyConfirmationPanel.SetActive(false);
         }
         else

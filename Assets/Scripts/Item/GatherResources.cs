@@ -5,7 +5,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ResourceGatherer : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
     public float maxWeight;
     public float currentWeight;
 
@@ -38,7 +37,7 @@ public class ResourceGatherer : MonoBehaviour
 
         ItemScriptableObject item = SelectRandomItem(rarity);
 
-        inventoryManager.AddItem(item);
+        GameService.Instance.inventoryManager.AddItem(item);
 
         currentWeight += item.Weight;
     }
