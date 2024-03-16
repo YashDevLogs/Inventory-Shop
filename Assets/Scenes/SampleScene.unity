@@ -163,10 +163,16 @@ MonoBehaviour:
   itemBoughtPanel: {fileID: 1609706281}
   ShopPanel: {fileID: 1238223576}
   inventoryDescriptionPanel: {fileID: 478746073}
-  SellButton: {fileID: 1677266991}
-  SellConfirmationButton: {fileID: 1144535360}
   menuButtons: {fileID: 1747593638}
   itemSellPanel: {fileID: 1007374647}
+  SellButton: {fileID: 1677266991}
+  SellConfirmationButton: {fileID: 1144535360}
+  shopManager: {fileID: 1238223580}
+  buyButton: {fileID: 557646317371385033}
+  BuyConfirmationPanel: {fileID: 1785869582}
+  buyConfirmationButton: {fileID: 996764170}
+  coinManager: {fileID: 959804835}
+  notEnoughCoinsPanel: {fileID: 1515076601}
 --- !u!4 &22598465
 Transform:
   m_ObjectHideFlags: 0
@@ -5816,20 +5822,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d31082f8ced974a9f3dc9f437902a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinManager: {fileID: 959804835}
   descriptionPanel: {fileID: 2291578282702055858}
-  quantity: {fileID: 0}
   inventorypanel: {fileID: 943897740}
   itemPanel: {fileID: 478893752}
-  BuyConfirmationPanel: {fileID: 1785869582}
-  itemBoughtPanel: {fileID: 1609706281}
-  notEnoughCoinsPanel: {fileID: 1515076601}
   materialButton: {fileID: 1789867408}
   weaponButton: {fileID: 983564242}
   consumablesButton: {fileID: 2012283312}
   treasureButton: {fileID: 1004156934}
-  buyButton: {fileID: 557646317371385033}
-  buyConfirmationButton: {fileID: 996764170}
   allItems:
   - {fileID: 11400000, guid: e565919ccff1a734fb620a721c0a6cf9, type: 2}
   - {fileID: 11400000, guid: 02249be8372684c4b8ec12a4188661e4, type: 2}

@@ -10,24 +10,22 @@ public class ShopManager : MonoBehaviour
 {
     [SerializeField] public ItemScriptableObject item { get; set; }
 
-    [SerializeField] private CoinManager coinManager;
+    private CoinManager coinManager;
     [SerializeField] private GameObject descriptionPanel;
-    [SerializeField] private InputField quantity;
     [SerializeField] private GameObject inventorypanel;
 
     private List<ItemScriptableObject> currentItems;
 
     [SerializeField] private GameObject itemPanel;
-    [SerializeField] private GameObject BuyConfirmationPanel; 
-    [SerializeField] private GameObject itemBoughtPanel;
-    [SerializeField] private GameObject notEnoughCoinsPanel;
+    private GameObject BuyConfirmationPanel; 
+    private GameObject notEnoughCoinsPanel;
 
     [SerializeField] private Button materialButton;
     [SerializeField] private Button weaponButton;
     [SerializeField] private Button consumablesButton;
     [SerializeField] private Button treasureButton;
-    [SerializeField] private Button buyButton;
-    [SerializeField] private Button buyConfirmationButton;
+    private Button buyButton;
+    private Button buyConfirmationButton;
 
     [SerializeField] private List<ItemScriptableObject> allItems = new List<ItemScriptableObject>();
 
@@ -47,14 +45,26 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
-        buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
-
         materialButton.onClick.AddListener(() => SetItemType(ItemType.Material));
         weaponButton.onClick.AddListener(() => SetItemType(ItemType.Weapon));
         consumablesButton.onClick.AddListener(() => SetItemType(ItemType.Consumable));
         treasureButton.onClick.AddListener(() => SetItemType(ItemType.Treasure));
     }
+
+    public ShopManager(Button buyButton, GameObject BuyConfirmationPanel, Button buyConfirmationButton, CoinManager coinManager, GameObject notEnoughCoinsPanel)
+    {
+        this.buyButton = buyButton;
+        this.BuyConfirmationPanel = BuyConfirmationPanel;
+        this.buyConfirmationButton = buyConfirmationButton;
+        this.coinManager = coinManager;
+        this.notEnoughCoinsPanel = notEnoughCoinsPanel;
+
+        buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
+        buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
+
+
+    }
+
 
     private void PopulatePanel(List<ItemScriptableObject> items)
     {
@@ -79,21 +89,21 @@ public class ShopManager : MonoBehaviour
 
     public void ShowBuyConfirmationPanel()
     {
-        BuyConfirmationPanel.SetActive(true);
+        GameService.Instance.shopManager.BuyConfirmationPanel.SetActive(true);
     }
 
     public void BuyItem( )
     {
         item = itemDescriptionDisplay.item;
-        if (coinManager.Coins > item.BuyingPrice)
+        if (GameService.Instance.shopManager.coinManager.Coins > item.BuyingPrice)
         {  
-            coinManager.DeductCoins(item.BuyingPrice);
+            GameService.Instance.shopManager.coinManager.DeductCoins(item.BuyingPrice);
             GameService.Instance.inventoryManager.AddItem(item);
-            BuyConfirmationPanel.SetActive(false);
+            GameService.Instance.shopManager.BuyConfirmationPanel.SetActive(false);
         }
         else
         {
-            notEnoughCoinsPanel.SetActive(true);
+            GameService.Instance.shopManager.notEnoughCoinsPanel.SetActive(true);
         }
     }
 

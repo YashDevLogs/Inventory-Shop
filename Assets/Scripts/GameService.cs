@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameService : GenericMonoSingleton<GameService>
 {
+    [Header("Inventoy manager references")]
     public InventoryManager inventoryManager;
 
     [SerializeField] private GameObject inventoryPanel;
@@ -18,19 +19,28 @@ public class GameService : GenericMonoSingleton<GameService>
     [SerializeField] private GameObject inventoryDescriptionPanel;
     [SerializeField] private GameObject menuButtons;
     [SerializeField] private GameObject itemSellPanel;
-
     [SerializeField] private Button SellButton;
     [SerializeField] private Button SellConfirmationButton;
-
     private bool sellButtonActivated = false;
     private bool sellConfirmationButtonActivated = false;
+
+    [Header("Shop manager references")]
+    public ShopManager shopManager;
+
+    [SerializeField] private Button buyButton;
+    [SerializeField] private GameObject BuyConfirmationPanel; 
+    [SerializeField] private Button buyConfirmationButton;
+    [SerializeField] private CoinManager coinManager;
+    [SerializeField] private GameObject notEnoughCoinsPanel;
+
+
 
 
     private void Start()
     {
         inventoryManager = new InventoryManager(
-            null, // Pass null for SellButton
-            null, // Pass null for SellConfirmationButton
+            SellButton,
+            SellConfirmationButton,
             inventoryPanel,
             shopDescriptionPanel,
             inventoryButton,
@@ -44,21 +54,9 @@ public class GameService : GenericMonoSingleton<GameService>
             menuButtons,
             itemSellPanel
         );
+
+        shopManager = new ShopManager(buyButton, BuyConfirmationPanel, buyConfirmationButton, coinManager, notEnoughCoinsPanel);
     }
 
-    private void Update()
-    {
-
-        if (SellButton.gameObject.activeInHierarchy && !sellButtonActivated)
-        {
-            inventoryManager.SetupSellButton(SellButton);
-            sellButtonActivated = true;
-        }
-
-        if (SellConfirmationButton.gameObject.activeInHierarchy && !sellConfirmationButtonActivated)
-        {
-            inventoryManager.SetupSellConfirmationButton(SellConfirmationButton);
-            sellConfirmationButtonActivated = true;
-        }
-    }
+   
 }

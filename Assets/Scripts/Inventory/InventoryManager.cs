@@ -64,6 +64,8 @@ public class InventoryManager : MonoBehaviour
     public InventoryManager(Button SellButton, Button SellConfirmationButton, GameObject inventoryPanel, GameObject shopDescriptionPanel, Button inventoryButton, Text currentWeightText, GameObject slotPrefab, Transform slotContainer, GameObject itemBoughtPanel, GameObject maxWeightReachedPanel, GameObject shopPanel, GameObject inventoryDescriptionPanel, GameObject menuButtons, GameObject itemSellPanel)
     {
         // Initialize other variables
+        this.SellButton = SellButton;
+        this.SellConfirmationButton = SellConfirmationButton;
         this.inventoryPanel = inventoryPanel;
         this.shopDescriptionPanel = shopDescriptionPanel;
         this.inventoryButton = inventoryButton;
@@ -79,6 +81,8 @@ public class InventoryManager : MonoBehaviour
 
         InstantiateSlots();
         inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
+        SellButton.onClick.AddListener(ShowSellConfirmationPanel);
+        SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
     }
 
     private void InstantiateSlots()
@@ -126,9 +130,9 @@ public class InventoryManager : MonoBehaviour
     }
     private void ShowDescriptionPanel(ItemScriptableObject item)
     {
-        itemSellPanel.SetActive(false);
-        ShopPanel.SetActive(false);
-        menuButtons.SetActive(false);
+        GameService.Instance.inventoryManager.itemSellPanel.SetActive(false);
+        GameService.Instance.inventoryManager.ShopPanel.SetActive(false);
+        GameService.Instance.inventoryManager.menuButtons.SetActive(false);
 
 
         // Show the description panel with the selected item information
@@ -211,18 +215,7 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    public void SetupSellButton(Button sellButton)
-    {
-        this.SellButton = sellButton;
-        SellButton.onClick.AddListener(ShowSellConfirmationPanel);
-    }
 
-    public void SetupSellConfirmationButton(Button sellConfirmationButton)
-    {
-        this.SellConfirmationButton = sellConfirmationButton;
-
-        SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
-    }
 
     private void ClearSlots()
     {
