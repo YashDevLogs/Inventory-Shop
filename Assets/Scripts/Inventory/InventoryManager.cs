@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
 
     private Button inventoryButton;
 
-    private ItemInfo itemDescriptionDisplay;
+    private ItemView itemDescriptionDisplay;
     [SerializeField] private SlotClass slotClass;
 
     private Text currentWeightText;
@@ -52,12 +52,6 @@ public class InventoryManager : MonoBehaviour
     private void OnDisable()
     {
         EventService.Instance.OnItemSell.RemoveListener(SellItem);
-    }
-
-    private void Awake()
-    {
-
-
     }
 
 
@@ -138,7 +132,7 @@ public class InventoryManager : MonoBehaviour
         // Show the description panel with the selected item information
         inventoryDescriptionPanel.SetActive(true);
 
-        ItemInfo inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemInfo>();
+        ItemView inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemView>();
         inventoryDescriptionDisplay.DisplayItemDescription(item);
     }
     public void AddItem(ItemScriptableObject item)

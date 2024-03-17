@@ -31,7 +31,7 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] private GameObject slotPrefab;
 
-    public ItemInfo itemDescriptionDisplay;
+    public ItemView itemDescriptionDisplay;
 
     private void OnEnable()
     {
@@ -76,9 +76,9 @@ public class ShopManager : MonoBehaviour
         foreach (ItemScriptableObject item in items)
         {
             GameObject slot = Instantiate(slotPrefab, itemPanel.transform);
-            slot.GetComponent<ItemIconDisplay>().item = item;
-            slot.GetComponent<ItemIconDisplay>().shopDescriptionPanel = descriptionPanel;
-            slot.GetComponent<ItemIconDisplay>().InventoryPanel = inventorypanel;
+            slot.GetComponent<ItemView>().item = item;
+            slot.GetComponent<ItemView>().shopDescriptionPanel = descriptionPanel;
+            slot.GetComponent<ItemView>().InventoryPanel = inventorypanel;
         }
     }
 

@@ -21,8 +21,7 @@ public class GameService : GenericMonoSingleton<GameService>
     [SerializeField] private GameObject itemSellPanel;
     [SerializeField] private Button SellButton;
     [SerializeField] private Button SellConfirmationButton;
-    private bool sellButtonActivated = false;
-    private bool sellConfirmationButtonActivated = false;
+
 
     [Header("Shop manager references")]
     public ShopManager shopManager;

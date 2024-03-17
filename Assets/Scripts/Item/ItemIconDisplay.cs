@@ -25,6 +25,7 @@ public class ItemIconDisplay : MonoBehaviour
 
     void Start()
     {
+
         nameText.text = item.Name;
         icon.sprite = item.Icon;
         buyPrice.text = "$" + item.BuyingPrice.ToString();
@@ -65,7 +66,7 @@ public class ItemIconDisplay : MonoBehaviour
         Debug.Log("Shop panel Set active");
 
         // Pass item information to the description panel
-        ItemInfo descriptionDisplay = shopDescriptionPanel.GetComponent<ItemInfo>();
+        ItemView descriptionDisplay = shopDescriptionPanel.GetComponent<ItemView>();
         descriptionDisplay.DisplayItemDescription(item);
     }
 
