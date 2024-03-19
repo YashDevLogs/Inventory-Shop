@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
 
     public ItemView itemDescriptionDisplay;
 
-    private void OnEnable()
+/*    private void OnEnable()
     {
         EventService.Instance.OnItemBuy.AddListener(BuyItem);
     }
@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
     private void OnDisable()
     {
         EventService.Instance.OnItemBuy.RemoveListener(BuyItem);
-    }
+    }*/
 
     private void Start()
     {
@@ -58,9 +58,10 @@ public class ShopManager : MonoBehaviour
         this.buyConfirmationButton = buyConfirmationButton;
         this.coinManager = coinManager;
         this.notEnoughCoinsPanel = notEnoughCoinsPanel;
+        Debug.Log("Shop service Initialized");
 
-        buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
-        buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
+        /*        buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
+                buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);*/
 
 
     }
@@ -92,7 +93,7 @@ public class ShopManager : MonoBehaviour
         GameService.Instance.shopManager.BuyConfirmationPanel.SetActive(true);
     }
 
-    public void BuyItem( )
+/*    public void BuyItem( )
     {
         item = itemDescriptionDisplay.item;
         if (GameService.Instance.shopManager.coinManager.Coins > item.BuyingPrice)
@@ -105,7 +106,7 @@ public class ShopManager : MonoBehaviour
         {
             GameService.Instance.shopManager.notEnoughCoinsPanel.SetActive(true);
         }
-    }
+    }*/
 
     public void SetItemType(ItemType type)
     {

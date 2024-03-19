@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EventService
 {
     private static EventService instance;
@@ -23,6 +25,6 @@ public class EventService
         OnItemBuy = new EventController();
         OnItemSell = new EventController();
         OnItemDescriptionShow = new EventController();
-
+        Debug.Log("Event service Initialized");
     }
 }

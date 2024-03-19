@@ -32,10 +32,15 @@ public class GameService : GenericMonoSingleton<GameService>
     [SerializeField] private CoinManager coinManager;
     [SerializeField] private GameObject notEnoughCoinsPanel;
 
-
+    public EventService eventService;
 
 
     private void Start()
+    {
+        InitializeServices();
+    }
+
+    private void InitializeServices()
     {
         inventoryManager = new InventoryManager(
             SellButton,
@@ -55,7 +60,9 @@ public class GameService : GenericMonoSingleton<GameService>
         );
 
         shopManager = new ShopManager(buyButton, BuyConfirmationPanel, buyConfirmationButton, coinManager, notEnoughCoinsPanel);
+
+        eventService = new EventService();
+
     }
 
-   
 }

@@ -34,10 +34,15 @@ public class ItemView : MonoBehaviour
     [SerializeField] private Text descriptionRarityType;
     [SerializeField] public SlotClass slot;
 
+    public ItemView itemDescriptionDisplay { get; private set; }
+     public Button itemBuyButton { get; private set; }
+     public Button itemSellButton { get; private set; }
+
 
     void Start()
     {
         ItemIconDisplay(item);
+
     }
 
     public void ItemIconDisplay(ItemScriptableObject item)

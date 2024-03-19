@@ -77,6 +77,8 @@ public class InventoryManager : MonoBehaviour
         inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
         SellButton.onClick.AddListener(ShowSellConfirmationPanel);
         SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
+
+        Debug.Log("Inventory service Initialized");
     }
 
     private void InstantiateSlots()
