@@ -33,10 +33,11 @@ public class InventoryManager : MonoBehaviour
     private GameObject itemBoughtPanel;
     [SerializeField] private GameObject SellConfirmationPanel;
 
+    private UIService uIService;
+
     private Button inventoryButton;
 
-    private ItemView itemDescriptionDisplay;
-    [SerializeField] private SlotClass slotClass;
+    private ItemViewService itemDescriptionDisplay;
 
     private Text currentWeightText;
 
@@ -44,6 +45,7 @@ public class InventoryManager : MonoBehaviour
 
     public float MaxWeight = 50;
     public float CurrentWeight;
+
     private void OnEnable()
     {
         EventService.Instance.OnItemSell.AddListener(SellItem);
@@ -55,17 +57,18 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    public InventoryManager(Button SellButton, Button SellConfirmationButton, GameObject inventoryPanel, GameObject shopDescriptionPanel, Button inventoryButton, Text currentWeightText, GameObject slotPrefab, Transform slotContainer, GameObject itemBoughtPanel, GameObject maxWeightReachedPanel, GameObject shopPanel, GameObject inventoryDescriptionPanel, GameObject menuButtons, GameObject itemSellPanel)
+    public InventoryManager(GameObject slotPrefab, Transform slotContainer,UIService uIService,Button SellButton, Button SellConfirmationButton, GameObject inventoryPanel, GameObject shopDescriptionPanel, Button inventoryButton, Text currentWeightText, GameObject itemBoughtPanel, GameObject maxWeightReachedPanel, GameObject shopPanel, GameObject inventoryDescriptionPanel, GameObject menuButtons, GameObject itemSellPanel)
     {
         // Initialize other variables
+        this.slotPrefab = slotPrefab;
+        this.slotContainer = slotContainer;
+        this.uIService = uIService;
         this.SellButton = SellButton;
         this.SellConfirmationButton = SellConfirmationButton;
         this.inventoryPanel = inventoryPanel;
         this.shopDescriptionPanel = shopDescriptionPanel;
         this.inventoryButton = inventoryButton;
         this.currentWeightText = currentWeightText;
-        this.slotPrefab = slotPrefab;
-        this.slotContainer = slotContainer;
         this.itemBoughtPanel = itemBoughtPanel;
         this.maxWeightReachedPanel = maxWeightReachedPanel;
         this.ShopPanel = shopPanel;
@@ -74,14 +77,14 @@ public class InventoryManager : MonoBehaviour
         this.itemSellPanel = itemSellPanel;
 
         InstantiateSlots();
-        inventoryButton.onClick.AddListener(() => ShowPanel(inventoryPanel));
-        SellButton.onClick.AddListener(ShowSellConfirmationPanel);
-        SellConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
+
+
+
 
         Debug.Log("Inventory service Initialized");
     }
 
-    private void InstantiateSlots()
+    public void InstantiateSlots()
     {
         ClearSlots();
 
@@ -114,35 +117,29 @@ public class InventoryManager : MonoBehaviour
         currentWeightText.text = "Weight : " + CurrentWeight + " / 50 kg Max";
     }
 
-    private void InvokeOnItemBuy()
-    {
-        EventService.Instance.OnItemSell.InvokeEvent();
-    }
 
-    public void ShowSellConfirmationPanel()
-    {
-        SellConfirmationPanel.SetActive(true);
-        Debug.Log("Sell confirmation panel displayed");
-    }
+
+
     private void ShowDescriptionPanel(ItemScriptableObject item)
     {
-        GameService.Instance.inventoryManager.itemSellPanel.SetActive(false);
-        GameService.Instance.inventoryManager.ShopPanel.SetActive(false);
-        GameService.Instance.inventoryManager.menuButtons.SetActive(false);
+        itemSellPanel.SetActive(false);
+        ShopPanel.SetActive(false);
+        menuButtons.SetActive(false);
 
 
         // Show the description panel with the selected item information
         inventoryDescriptionPanel.SetActive(true);
 
-        ItemView inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemView>();
+        ItemViewService inventoryDescriptionDisplay = inventoryDescriptionPanel.GetComponent<ItemViewService>();
         inventoryDescriptionDisplay.DisplayItemDescription(item);
     }
+
     public void AddItem(ItemScriptableObject item)
     {
         float totalWeight = item.Weight + CurrentWeight;
         if (totalWeight <= MaxWeight)
         {
-            SlotClass slot = Contains(item);
+            SlotClass slot = Contains(item); 
             if (slot != null)
                 slot.AddQuantity(1);
             else
@@ -189,17 +186,11 @@ public class InventoryManager : MonoBehaviour
             return false;
         }
 
-        InstantiateSlots();
+       InstantiateSlots();
         return true;
     }
 
-    private void ShowPanel(GameObject panelToShow)
-    {
-        inventoryPanel.SetActive(false);
-        shopDescriptionPanel.SetActive(false);
 
-        panelToShow.SetActive(true);
-    }
 
     public SlotClass Contains(ItemScriptableObject item)
     {

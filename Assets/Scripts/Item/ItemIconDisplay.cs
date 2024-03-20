@@ -66,7 +66,7 @@ public class ItemIconDisplay : MonoBehaviour
         Debug.Log("Shop panel Set active");
 
         // Pass item information to the description panel
-        ItemView descriptionDisplay = shopDescriptionPanel.GetComponent<ItemView>();
+        ItemViewService descriptionDisplay = shopDescriptionPanel.GetComponent<ItemViewService>();
         descriptionDisplay.DisplayItemDescription(item);
     }
 

@@ -31,17 +31,17 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] private GameObject slotPrefab;
 
-    public ItemView itemDescriptionDisplay;
+    public ItemViewService itemDescriptionDisplay;
 
-/*    private void OnEnable()
+    private void OnEnable()
     {
-        EventService.Instance.OnItemBuy.AddListener(BuyItem);
+        
     }
 
     private void OnDisable()
     {
-        EventService.Instance.OnItemBuy.RemoveListener(BuyItem);
-    }*/
+
+    }
 
     private void Start()
     {
@@ -60,8 +60,8 @@ public class ShopManager : MonoBehaviour
         this.notEnoughCoinsPanel = notEnoughCoinsPanel;
         Debug.Log("Shop service Initialized");
 
-        /*        buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
-                buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);*/
+        buyButton.onClick.AddListener(ShowBuyConfirmationPanel);
+        buyConfirmationButton.onClick.AddListener(InvokeOnItemBuy);
 
 
     }
@@ -77,9 +77,9 @@ public class ShopManager : MonoBehaviour
         foreach (ItemScriptableObject item in items)
         {
             GameObject slot = Instantiate(slotPrefab, itemPanel.transform);
-            slot.GetComponent<ItemView>().item = item;
-            slot.GetComponent<ItemView>().shopDescriptionPanel = descriptionPanel;
-            slot.GetComponent<ItemView>().InventoryPanel = inventorypanel;
+            slot.GetComponent<ItemViewService>().item = item;
+            slot.GetComponent<ItemViewService>().shopDescriptionPanel = descriptionPanel;
+            slot.GetComponent<ItemViewService>().InventoryPanel = inventorypanel;
         }
     }
 

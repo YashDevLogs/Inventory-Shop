@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 467279533518597250}
   - component: {fileID: 6804454608341415438}
   - component: {fileID: 5335958303119101873}
+  - component: {fileID: 1019272677018135775}
   m_Layer: 5
   m_Name: ShopItemButton
   m_TagString: Untagged
@@ -464,6 +465,7 @@ MonoBehaviour:
   item: {fileID: 0}
   shopDescriptionPanel: {fileID: 0}
   InventoryPanel: {fileID: 0}
+  sellConfirmationPanel: {fileID: 0}
   icon: {fileID: 7927764145889769876}
   iconNameText: {fileID: 8114533900117971553}
   iconBuyPrice: {fileID: 5647966602755632098}
@@ -485,3 +487,18 @@ MonoBehaviour:
   slot:
     item: {fileID: 0}
     quantity: 0
+  coinManager: {fileID: 0}
+--- !u!114 &1019272677018135775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467075161546989821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df671ebab46b2b34191c4ef29bb62a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  inventoryManager: {fileID: 0}

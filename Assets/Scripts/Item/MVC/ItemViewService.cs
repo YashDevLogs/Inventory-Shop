@@ -1,15 +1,16 @@
 using Assets.Scripts.Inventory;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemView : MonoBehaviour
+public class ItemViewService : MonoBehaviour
 {
-    public ItemController controller { get; private set; }
 
     [SerializeField] public ItemScriptableObject item;
 
     [SerializeField] public GameObject shopDescriptionPanel;
     [SerializeField] public GameObject InventoryPanel;
+    [SerializeField] private GameObject sellConfirmationPanel;
 
     [SerializeField] private Image icon;
     [SerializeField] private Text iconNameText;
@@ -33,11 +34,28 @@ public class ItemView : MonoBehaviour
     [SerializeField] private Text descriptionWeight;
     [SerializeField] private Text descriptionRarityType;
     [SerializeField] public SlotClass slot;
+    [SerializeField] private CoinManager coinManager;
 
-    public ItemView itemDescriptionDisplay { get; private set; }
-     public Button itemBuyButton { get; private set; }
-     public Button itemSellButton { get; private set; }
 
+    public ItemViewService itemDescriptionDisplay { get; private set; }
+
+
+
+
+    public void OnEnable()
+    {
+
+            GameService.Instance.eventService.OnItemBuy.AddListener(BuyItem);
+            GameService.Instance.eventService.OnItemSell.AddListener(SellItem);
+      
+    }
+
+    public void OnDisable()
+    {
+
+            GameService.Instance.eventService.OnItemBuy.RemoveListener(BuyItem);
+            GameService.Instance.eventService.OnItemSell.RemoveListener(SellItem);
+    }
 
     void Start()
     {
@@ -81,7 +99,7 @@ public class ItemView : MonoBehaviour
             Debug.Log("Shop panel Set active");
 
             // Pass item information to the description panel
-            ItemView descriptionDisplay = shopDescriptionPanel.GetComponent<ItemView>();
+            ItemViewService descriptionDisplay = shopDescriptionPanel.GetComponent<ItemViewService>();
             descriptionDisplay.DisplayItemDescription(item);
         }
     }
@@ -142,5 +160,31 @@ public class ItemView : MonoBehaviour
         }
     }
 
-    public void SetController(ItemController _controller) => controller = _controller;
+    public void BuyItem()
+    {
+         ItemScriptableObject item = itemDescriptionDisplay.item;
+        if (coinManager.Coins >= item.BuyingPrice)
+        {
+            coinManager.DeductCoins(item.BuyingPrice);
+            GameService.Instance.inventoryManager.AddItem(item);
+            sellConfirmationPanel.SetActive(false); // Hide the sell confirmation panel
+        }
+        else
+        {
+            // Display a message indicating not enough coins
+            Debug.LogWarning("Not enough coins to buy this item!");
+        }
+    }
+
+    public void SellItem()
+    {
+        Debug.Log("Sell Item Invoked");
+        ItemScriptableObject item = itemDescriptionDisplay.item;
+
+        coinManager.AddCoins(item.SellingPrice);
+        GameService.Instance.inventoryManager?.RemoveItem(item);
+        sellConfirmationPanel.SetActive(false); // Hide the sell confirmation panel
+        Debug.Log("Item Sold");
+    }
+
 }

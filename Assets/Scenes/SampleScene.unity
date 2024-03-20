@@ -173,6 +173,7 @@ MonoBehaviour:
   buyConfirmationButton: {fileID: 996764170}
   coinManager: {fileID: 959804835}
   notEnoughCoinsPanel: {fileID: 1515076601}
+  uiService: {fileID: 798537394}
 --- !u!4 &22598465
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,6 +2115,7 @@ MonoBehaviour:
   item: {fileID: 0}
   shopDescriptionPanel: {fileID: 2291578282702055858}
   InventoryPanel: {fileID: 943897740}
+  sellConfirmationPanel: {fileID: 1007374647}
   icon: {fileID: 0}
   iconNameText: {fileID: 0}
   iconBuyPrice: {fileID: 0}
@@ -2135,6 +2137,7 @@ MonoBehaviour:
   slot:
     item: {fileID: 0}
     quantity: 0
+  coinManager: {fileID: 959804835}
 --- !u!1 &478893752
 GameObject:
   m_ObjectHideFlags: 0
@@ -3703,8 +3706,9 @@ GameObject:
   - component: {fileID: 798537388}
   - component: {fileID: 798537393}
   - component: {fileID: 798537392}
+  - component: {fileID: 798537394}
   m_Layer: 5
-  m_Name: InventoryCanvas
+  m_Name: Canvas - UIService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3844,6 +3848,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798537387}
   m_CullTransparentMesh: 1
+--- !u!114 &798537394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798537387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19be9565fe7b82445a3705efbabe3b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 943897740}
+  ShopPanel: {fileID: 1238223576}
+  shopDescriptionPanel: {fileID: 2291578282702055858}
+  notEnoughCoinsPanel: {fileID: 1515076601}
+  sellConfirmationPanel: {fileID: 1007374647}
+  BuyConfirmationPanel: {fileID: 1785869582}
+  menuButtons: {fileID: 1747593638}
+  currentWeightText: {fileID: 1849451647}
+  inventoryButton: {fileID: 974026961}
+  SellButton: {fileID: 1677266991}
+  SellConfirmationButton: {fileID: 1144535360}
+  buyButton: {fileID: 557646317371385033}
+  buyConfirmationButton: {fileID: 996764170}
+  materialButton: {fileID: 1789867408}
+  weaponButton: {fileID: 983564242}
+  consumablesButton: {fileID: 2012283312}
+  treasureButton: {fileID: 1004156934}
+  shopButton: {fileID: 0}
+  inventoryItems: []
+  slotPrefab: {fileID: 8255806383083770988, guid: 9391d0d21a0cafc4d80cae93dedcc222, type: 3}
+  slotContainer: {fileID: 743534255}
+  CurrentWeight: 0
 --- !u!1 &931890549
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +4047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsUI: {fileID: 959804833}
-  Coins: 0
+  Coins: 1000
 --- !u!1 &974026960
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,6 +7148,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515076601}
   m_CullTransparentMesh: 1
+--- !u!1 &1576490600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576490602}
+  - component: {fileID: 1576490601}
+  m_Layer: 0
+  m_Name: ItemController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1576490601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576490600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df671ebab46b2b34191c4ef29bb62a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  itemView: {fileID: 0}
+  inventoryManager: {fileID: 1964691078}
+--- !u!4 &1576490602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576490600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.45533144, y: -0.38032192, z: -0.069588}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609706281
 GameObject:
   m_ObjectHideFlags: 0
@@ -8756,72 +8841,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1900707030587097045, guid: 5617814a720d50a4087c7740610266ae, type: 3}
   m_PrefabInstance: {fileID: 438307043}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1945941662
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1945941663}
-  - component: {fileID: 1945941664}
-  m_Layer: 0
-  m_Name: UiService
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1945941663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945941662}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1945941664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945941662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfac559478d2d0141875147a35a340a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 943897740}
-  ShopPanel: {fileID: 1238223576}
-  shopDescriptionPanel: {fileID: 2291578282702055858}
-  inventoryDescriptionPanel: {fileID: 478746073}
-  maxWeightReachedPanel: {fileID: 380281543}
-  notEnoughCoinsPanel: {fileID: 1515076601}
-  itemBoughtPanel: {fileID: 1609706281}
-  itemSellPanel: {fileID: 1007374647}
-  BuyConfirmationPanel: {fileID: 1785869582}
-  SellConfirmationPanel: {fileID: 0}
-  menuButtons: {fileID: 1747593638}
-  currentWeightText: {fileID: 1849451647}
-  inventoryButton: {fileID: 974026961}
-  SellButton: {fileID: 1677266991}
-  SellConfirmationButton: {fileID: 1144535360}
-  buyButton: {fileID: 557646317371385033}
-  buyConfirmationButton: {fileID: 996764170}
-  materialButton: {fileID: 1789867408}
-  weaponButton: {fileID: 983564242}
-  consumablesButton: {fileID: 2012283312}
-  treasureButton: {fileID: 1004156934}
-  shopButton: {fileID: 140157848}
 --- !u!1 &1964691077
 GameObject:
   m_ObjectHideFlags: 0
@@ -8857,9 +8876,6 @@ MonoBehaviour:
   SellButton: {fileID: 1677266991}
   SellConfirmationButton: {fileID: 1144535360}
   SellConfirmationPanel: {fileID: 1007374647}
-  slotClass:
-    item: {fileID: 0}
-    quantity: 0
   MaxWeight: 50
   CurrentWeight: 0
 --- !u!4 &1964691079
@@ -10853,6 +10869,7 @@ MonoBehaviour:
   item: {fileID: 0}
   shopDescriptionPanel: {fileID: 2291578282702055858}
   InventoryPanel: {fileID: 943897740}
+  sellConfirmationPanel: {fileID: 1007374647}
   icon: {fileID: 0}
   iconNameText: {fileID: 0}
   iconBuyPrice: {fileID: 0}
@@ -10874,6 +10891,7 @@ MonoBehaviour:
   slot:
     item: {fileID: 0}
     quantity: 0
+  coinManager: {fileID: 959804835}
 --- !u!222 &8075386782556586787
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10999,4 +11017,4 @@ SceneRoots:
   - {fileID: 2097835100}
   - {fileID: 931890550}
   - {fileID: 22598465}
-  - {fileID: 1945941663}
+  - {fileID: 1576490602}

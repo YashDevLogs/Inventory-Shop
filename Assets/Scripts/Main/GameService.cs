@@ -34,6 +34,10 @@ public class GameService : GenericMonoSingleton<GameService>
 
     public EventService eventService;
 
+    [SerializeField] private UIService uiService;
+    public UIService UIService => uiService;
+
+
 
     private void Start()
     {
@@ -43,14 +47,15 @@ public class GameService : GenericMonoSingleton<GameService>
     private void InitializeServices()
     {
         inventoryManager = new InventoryManager(
+            slotPrefab,
+            slotContainer,
+            UIService,
             SellButton,
             SellConfirmationButton,
             inventoryPanel,
             shopDescriptionPanel,
             inventoryButton,
             currentWeightText,
-            slotPrefab,
-            slotContainer,
             itemBoughtPanel,
             maxWeightReachedPanel,
             ShopPanel,
